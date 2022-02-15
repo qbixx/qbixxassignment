@@ -12,6 +12,7 @@ class IndexClients extends Controller
 {
     public function __invoke(): View
     {
+        abort(404);
         $clients = Client::all();
 
         return view('pages.admin.clients.index', compact('clients'));
