@@ -1,16 +1,17 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Interfaces\Admin\Clients\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\View\View;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class CreateClient extends Controller
 {
-    public function __invoke(): View
-    {
-        return view('pages.admin.clients.create');
-    }
+
+  public function __invoke(): Response
+  {
+    return Inertia::render('Admin/Clients/Create', []);
+  }
+
 }

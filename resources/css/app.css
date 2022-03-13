@@ -1,8 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import "~vue-multiselect/dist/vue-multiselect.css";
+
 @tailwind base;
 @tailwind components;
+.card {
+  @apply mb-4 cursor-pointer bg-white rounded border border-gray-200 shadow hover:bg-gray-50;
+}
+
+.card .title {
+  @apply px-4 py-3 text-lg font-semibold tracking-tight text-gray-700 dark:text-gray-300;
+}
+
+.card .body {
+  @apply p-4 text-gray-700 dark:text-gray-400;
+}
+
+.green {
+  @apply bg-green-100 text-green-700;
+}
+
+.blue {
+  @apply bg-blue-100 text-blue-700;
+}
+
+.yellow {
+  @apply bg-yellow-100 text-yellow-700;
+}
+
+.form-input {
+  @apply w-full appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none;
+}
+
+
 @tailwind utilities;
 
 .bg-dark {
-    background: rgb(43,51,58);
-    background: radial-gradient(at bottom, rgba(43,51,58,1) 0%, rgba(23,27,32,1) 100%);
+  background: rgb(43, 51, 58);
+  background: radial-gradient(at bottom, rgba(43, 51, 58, 1) 0%, rgba(23, 27, 32, 1) 100%);
 }

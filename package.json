@@ -18,6 +18,13 @@
         "tailwindcss": "^3.0.22"
     },
     "dependencies": {
-        "tw-elements": "^1.0.0-alpha11"
+        "@inertiajs/inertia": "^0.11.0",
+        "@inertiajs/inertia-vue3": "^0.6.0",
+        "@vue/compiler-sfc": "^3.2.31",
+        "tw-elements": "^1.0.0-alpha11",
+        "vue-loader": "^17.0.0",
+        "vue-multiselect": "^3.0.0-alpha.2",
+        "vue-sweetalert2": "^5.0.2",
+        "vuex": "^4.0.2"
     }
 }

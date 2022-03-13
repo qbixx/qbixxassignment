@@ -5,8 +5,12 @@ declare(strict_types=1);
 use App\Enums\RoutesEnum;
 use Illuminate\Support\Facades\Route;
 use Interfaces\Admin\Clients\Controllers\CreateClient;
+use Interfaces\Admin\Clients\Controllers\DeleteClient;
+use Interfaces\Admin\Clients\Controllers\EditClient;
 use Interfaces\Admin\Clients\Controllers\IndexClients;
 use Interfaces\Admin\Clients\Controllers\StoreClient;
+use Interfaces\Admin\Clients\Controllers\UpdateClient;
+use Interfaces\Front\Clients\ShowClient;
 use Interfaces\Front\Landing\WelcomeController;
 
 /*
@@ -21,6 +25,10 @@ use Interfaces\Front\Landing\WelcomeController;
 */
 
 Route::get('/', WelcomeController::class)->name(RoutesEnum::FRONT_WELCOME);
+Route::get('/clients/{id}', ShowClient::class)->name(RoutesEnum::FRONT_CLIENT_SHOW);
 Route::get('admin/clients', IndexClients::class)->name(RoutesEnum::ADMIN_INDEX_CLIENTS);
-Route::get('admin/clients/create', CreateClient::class)->name(RoutesEnum::ADMIN_CREATE_CLIENT);
+Route::get('admin/clients/create', CreateClient::class)->name(RoutesEnum::ADMIN_CREATE_CLIENTS);
 Route::post('admin/clients', StoreClient::class)->name(RoutesEnum::ADMIN_STORE_CLIENT);
+Route::get('admin/clients/{id}/edit', EditClient::class)->name(RoutesEnum::ADMIN_EDIT_CLIENT);
+Route::put('admin/clients/update/{id}', UpdateClient::class)->name(RoutesEnum::ADMIN_UPDATE_CLIENT);
+Route::delete('admin/clients/{id}', DeleteClient::class)->name(RoutesEnum::ADMIN_DESTROY_CLIENT);
