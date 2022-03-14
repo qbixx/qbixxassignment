@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http;
 
+use App\Http\Middleware\SetLocale;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Session\Middleware\StartSession;
 
 class Kernel extends HttpKernel
 {
@@ -39,6 +41,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\HandleInertiaRequests::class,
+            \App\Http\Middleware\SetLocale::class,
         ],
 
         'api' => [
@@ -48,6 +52,11 @@ class Kernel extends HttpKernel
         ],
     ];
 
+
+    protected $middlewarePriority = [
+        \Illuminate\Session\Middleware\StartSession::class,
+        \App\Http\Middleware\SetLocale::class,
+    ];
     /**
      * The application's route middleware.
      *

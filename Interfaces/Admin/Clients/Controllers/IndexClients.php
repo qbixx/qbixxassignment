@@ -6,14 +6,15 @@ namespace Interfaces\Admin\Clients\Controllers;
 
 use App\Http\Controllers\Controller;
 use Domain\Clients\Models\Client;
-use Illuminate\View\View;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class IndexClients extends Controller
 {
-    public function __invoke(): View
+    public function __invoke(): Response
     {
-        $clients = Client::all();
+        $clients = Client::with('items')->get();
 
-        return view('pages.admin.clients.index', compact('clients'));
+        return Inertia::render('Admin/Clients/Index', compact('clients'));
     }
 }

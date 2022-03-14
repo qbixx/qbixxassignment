@@ -5,12 +5,20 @@ declare(strict_types=1);
 namespace Interfaces\Admin\Clients\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\View\View;
+use Domain\Clients\Models\ItemType;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class CreateClient extends Controller
 {
-    public function __invoke(): View
+    public function __invoke(): Response
     {
-        return view('pages.admin.clients.create');
+        $types = [];
+        foreach (ItemType::all() as $type) {
+            foreach (config('app.available_locales') as $lang) {
+                $types[$lang][$type->id] = $type->getTranslation('name', $lang);
+            }
+        }
+        return Inertia::render('Admin/Clients/Create', compact('types'));
     }
 }
