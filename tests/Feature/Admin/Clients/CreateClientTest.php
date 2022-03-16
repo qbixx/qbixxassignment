@@ -14,6 +14,7 @@ class CreateClientTest extends FeatureTest
      */
     public function a guest can view clients(): void
     {
+        /**/
         $this->get(route(RoutesEnum::ADMIN_CREATE_CLIENT))
             ->assertOk();
     }
