@@ -7,6 +7,10 @@ module.exports = {
     ],
     theme: {
         extend: {
+            colors: {
+                primary: '#249eea',
+                secondary: '#575f65',
+            },
             fontFamily: {
                 sans: [
                     'Nunito',
@@ -23,10 +27,12 @@ module.exports = {
                     '"Segoe UI Symbol"',
                     '"Noto Color Emoji"',
                 ],
+                'montserrat': ['Montserrat', 'san-serif'],
             },
         },
     },
     plugins: [
         require('tw-elements/dist/plugin'),
+        require('@tailwindcss/line-clamp')
     ],
 }

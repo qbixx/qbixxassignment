@@ -13,6 +13,15 @@ createInertiaApp({
             .use(plugin)
             .component('Head', Head)
             .component('Link', Link)
+            .mixin({
+                methods: {
+                    trans(key, locale = 'en') {
+                        const translations = this.$page.props.translations
+
+                        return translations[key] ?? key
+                    }
+                }
+            })
             .mount(el)
     },
 })

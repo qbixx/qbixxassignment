@@ -20,6 +20,16 @@
             </div>
         </nav>
 
+        <div class="py-8 mx-auto max-w-7xl">
+            <Locale />
+        </div>
+
         <slot />
     </div>
 </template>
+<script>
+import Locale from "@/js/Components/Base/Locale";
+export default {
+    components: { Locale }
+}
+</script>

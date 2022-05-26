@@ -36,6 +36,8 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
+            'locale' => fn() => app()->getLocale(),
+            'translations' => fn() => json_decode(file_get_contents(lang_path(app()->getLocale() . '.json')), true),
         ]);
     }
 }

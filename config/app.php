@@ -98,6 +98,8 @@ return [
 
     'fallback_locale' => 'en',
 
+    'locales' => ['en', 'nl', 'fr'],
+
     /*
     |--------------------------------------------------------------------------
     | Faker Locale
@@ -177,6 +179,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         \App\Providers\AliasServiceProvider::class,
+        \App\Providers\RepositoryServiceProvider::class,
     ],
 
     /*
