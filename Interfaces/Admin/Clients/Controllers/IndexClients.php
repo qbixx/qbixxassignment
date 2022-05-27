@@ -17,7 +17,7 @@ class IndexClients extends Controller
 
         return Inertia::render(
             'Admin/Clients/Index',
-            compact('clients'),
+            compact('clients')
         );
     }
 }
