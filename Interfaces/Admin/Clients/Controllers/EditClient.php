@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
 use Interfaces\Admin\Clients\Repositories\ClientRepository;
+use Interfaces\Admin\Clients\Requests\UpdateClientRequest;
 
 class EditClient extends Controller
 {
@@ -18,11 +19,25 @@ class EditClient extends Controller
     {
         $locales = config('app.available_locales');
         if($client->items->isEmpty()){
-            ClientRepository::addDefaultItems($client);
+            ClientRepository::addItems($client);
         }
+
+        $items = $client->fresh()->items;
         return Inertia::render(
             'Admin/Clients/Edit',
-            compact('client', 'locales')
+            compact('client', 'locales', 'items')
         );
+    }
+
+    public function update(UpdateClientRequest $request, Client $client)
+    {
+        $locales = config('app.available_locales');
+
+        Client::find($client->id)->update(['name' => $request['name']]);
+        $items = $request['items'];
+
+        ClientRepository::addItems($client, false, $items);
+
+        return redirect()->route(RoutesEnum::ADMIN_INDEX_CLIENTS);
     }
 }

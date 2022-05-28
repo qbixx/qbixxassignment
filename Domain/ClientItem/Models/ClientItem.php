@@ -13,4 +13,8 @@ class ClientItem extends Model
     use HasFactory, HasTranslations;
 
     public $translatable = ['title', 'paragraph'];
+
+    const Wisdom = 'Wisdom';
+    const Design = 'Design';
+    const Philosophy = 'Philosophy';
 }

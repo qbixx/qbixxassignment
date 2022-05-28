@@ -18,7 +18,7 @@ class StoreClient extends Controller
     public function __invoke(StoreClientRequest $request): RedirectResponse
     {
         $client = Client::create($request->safe(['name']));
-        ClientRepository::addDefaultItems($client);
+        ClientRepository::addItems($client);
 
         return redirect()->route(RoutesEnum::ADMIN_INDEX_CLIENTS);
     }
