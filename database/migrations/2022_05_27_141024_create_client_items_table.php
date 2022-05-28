@@ -10,7 +10,14 @@ return new class extends Migration
     {
         Schema::create('client_items', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('client_id');
+            $table->enum('type', ['Wisdom', 'Philosophy', 'Design']);
+
+            $table->json('title');
+            $table->json('paragraph');
+
             $table->timestamps();
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
         });
     }
 

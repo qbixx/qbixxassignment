@@ -25,4 +25,9 @@ class RoutesEnum
      * @string
      */
     public const FRONT_WELCOME = 'front.welcome';
+
+    /**
+     * @string
+     */
+    public const ADMIN_EDIT_CLIENT = 'admin.clients.edit';
 }
