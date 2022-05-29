@@ -31,8 +31,8 @@ Route::group(['prefix' => 'admin'], function(){
 
     Route::get('/clients/{client}', ViewClient::class)->name(RoutesEnum::ADMIN_VIEW_CLIENT);
     Route::get('/clients/{client}/edit', [EditClient::class, 'edit'])->name(RoutesEnum::ADMIN_EDIT_CLIENT);
-    Route::put('/clients/{client}/update', [EditClient::class, 'update'])->name(RoutesEnum::ADMIN_UPDATE_CLIENT);
-    Route::delete('/clients/{client}/delete', DeleteClient::class)->name(RoutesEnum::ADMIN_DELETE_CLIENT);
+    Route::put('/clients/{client}', [EditClient::class, 'update'])->name(RoutesEnum::ADMIN_UPDATE_CLIENT);
+    Route::delete('/clients/{client}', DeleteClient::class)->name(RoutesEnum::ADMIN_DELETE_CLIENT);
 
     Route::post('/language/{locale}', function ($locale) {
         session()->put('locale', $locale);

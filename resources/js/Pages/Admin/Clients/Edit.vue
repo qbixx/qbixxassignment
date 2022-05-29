@@ -2,7 +2,7 @@
     <AdminLayout>
         <Head title="Edit Client" />
 
-        <form method="POST" class="pt-4" @submit.prevent="form.put(`/admin/clients/${client.id}/update`)">
+        <form method="POST" class="pt-4" @submit.prevent="form.put(`/admin/clients/${client.id}`)">
             <div class="flex justify-center" v-for="(err1, err2) in form.errors">
                 <div class="mt-2 font-semibold text-red-500">
                     {{ err1 }}
@@ -131,8 +131,8 @@
             const itemLocale = ref("en");
 
             const form = useForm({
-                // name: props.client.name,
-                // items: props.items
+                name: props.client.name,
+                items: props.items
             })
 
             const isLocalActive = (active) => {

@@ -10,7 +10,7 @@ use Domain\Clients\Models\Client;
 use Illuminate\Http\Response;
 use Tests\FeatureTest;
 
-class EditClientTest extends FeatureTest
+class UpdateClientTest extends FeatureTest
 {
     /**
      * @test
@@ -49,14 +49,6 @@ class EditClientTest extends FeatureTest
 
     }
 
-    /**
-     * @test
-     */
-    public function a guest cant update a client with invalid ID (): void
-    {
-        $this->put(route(RoutesEnum::ADMIN_UPDATE_CLIENT, ['client' => 222]), [])
-        ->assertStatus(Response::HTTP_NOT_FOUND);
-    }
 
     /**
      * @test
@@ -83,6 +75,15 @@ class EditClientTest extends FeatureTest
         $this->assertSame($clientType, $item1->type_locale);
         $this->assertSame($formData['items'][0]['title'][$locale], $item1->title_locale);
         $this->assertSame($formData['items'][0]['paragraph'][$locale], $item1->paragraph_locale);
+    }
+
+    /**
+     * @test
+     */
+    public function a guest cant update a client with invalid ID (): void
+    {
+        $this->put(route(RoutesEnum::ADMIN_UPDATE_CLIENT, ['client' => 222]), [])
+            ->assertStatus(Response::HTTP_NOT_FOUND);
     }
 
     /**
