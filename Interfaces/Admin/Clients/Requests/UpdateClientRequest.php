@@ -11,9 +11,9 @@ class UpdateClientRequest extends FormRequest
 {
     public function rules(): array
     {
-        $Wisdom = ClientItem::Wisdom;
-        $Philosophy = ClientItem::Philosophy;
-        $Design = ClientItem::Design;
+        $Wisdom = ClientItem::WISDOM;
+        $Philosophy = ClientItem::PHILOSOPHY;
+        $Design = ClientItem::DESIGN;
 
         return [
             'name' => ['required', 'string', 'min:4', 'max:30'],
@@ -36,13 +36,15 @@ class UpdateClientRequest extends FormRequest
     {
 
         return [
-            'items.*.paragraph.en.required' => 'The paragraph english field is required',
-            'items.*.paragraph.fr.required' => 'The paragraph french field is required',
-            'items.*.paragraph.nl.required' => 'The paragraph dutch field is required',
+            'items.*.type.in' => 'The selected type is invalid.',
 
-            'items.*.title.en.required' => 'The title english field is required',
-            'items.*.title.fr.required' => 'The title french field is required',
-            'items.*.title.nl.required' => 'The title dutch field is required',
+            'items.*.paragraph.en.required' => 'The english paragraph field is required.',
+            'items.*.paragraph.fr.required' => 'The french paragraph field is required.',
+            'items.*.paragraph.nl.required' => 'The dutch paragraph field is required.',
+
+            'items.*.title.en.required' => 'The english title field is required.',
+            'items.*.title.fr.required' => 'The french title field is required.',
+            'items.*.title.nl.required' => 'The dutch title field is required.',
         ];
     }
 }

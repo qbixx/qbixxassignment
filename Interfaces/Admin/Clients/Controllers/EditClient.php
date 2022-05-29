@@ -19,7 +19,7 @@ class EditClient extends Controller
     {
         $locales = config('app.available_locales');
         if($client->items->isEmpty()){
-            ClientRepository::addItems($client);
+            ClientRepository::addOrUpdateItems($client);
         }
 
         $items = $client->fresh()->items;
@@ -34,7 +34,7 @@ class EditClient extends Controller
         Client::find($client->id)->update(['name' => $request['name']]);
         $items = $request['items'];
 
-        ClientRepository::addItems($client, false, $items);
+        ClientRepository::addOrUpdateItems($client, false, $items);
         return redirect()->route(RoutesEnum::ADMIN_INDEX_CLIENTS);
     }
 }

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientRepository
 {
-    public static function addItems(Client $client, bool $create =  true, array $items = []){
+    public static function addOrUpdateItems(Client $client, bool $create =  true, array $items = []){
 
         $defaultItems = $create ? config('default_client_items') : $items;
         $locales = config('app.available_locales');

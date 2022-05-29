@@ -23,16 +23,22 @@ use Interfaces\Front\Landing\WelcomeController;
 */
 
 Route::get('/', WelcomeController::class)->name(RoutesEnum::FRONT_WELCOME);
-Route::get('admin/clients', IndexClients::class)->name(RoutesEnum::ADMIN_INDEX_CLIENTS);
-Route::inertia('admin/clients/create', 'Admin/Clients/Create')->name(RoutesEnum::ADMIN_CREATE_CLIENT);
-Route::post('admin/clients/create', StoreClient::class)->name(RoutesEnum::ADMIN_STORE_CLIENT);
 
-Route::get('admin/clients/{client}', ViewClient::class)->name(RoutesEnum::ADMIN_VIEW_CLIENT);
-Route::get('admin/clients/{client}/edit', [EditClient::class, 'edit'])->name(RoutesEnum::ADMIN_EDIT_CLIENT);
-Route::put('admin/clients/{client}/update', [EditClient::class, 'update']);
-Route::delete('admin/clients/{client}/delete', DeleteClient::class);
+Route::group(['prefix' => 'admin'], function(){
+    Route::get('/clients', IndexClients::class)->name(RoutesEnum::ADMIN_INDEX_CLIENTS);
+    Route::inertia('/clients/create', 'Admin/Clients/Create')->name(RoutesEnum::ADMIN_CREATE_CLIENT);
+    Route::post('/clients/create', StoreClient::class)->name(RoutesEnum::ADMIN_STORE_CLIENT);
 
-Route::post('admin/language/{locale}', function ($locale) {
-    session()->put('locale', $locale);
-    return redirect()->back();
+    Route::get('/clients/{client}', ViewClient::class)->name(RoutesEnum::ADMIN_VIEW_CLIENT);
+    Route::get('/clients/{client}/edit', [EditClient::class, 'edit'])->name(RoutesEnum::ADMIN_EDIT_CLIENT);
+    Route::put('/clients/{client}/update', [EditClient::class, 'update'])->name(RoutesEnum::ADMIN_UPDATE_CLIENT);
+    Route::delete('/clients/{client}/delete', DeleteClient::class)->name(RoutesEnum::ADMIN_DELETE_CLIENT);
+
+    Route::post('/language/{locale}', function ($locale) {
+        session()->put('locale', $locale);
+        return redirect()->back();
+    });
+
 });
+
+

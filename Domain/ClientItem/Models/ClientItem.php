@@ -16,9 +16,9 @@ class ClientItem extends Model
 
     protected $appends = ['title_locale', 'paragraph_locale', 'type_locale'];
 
-    const Wisdom = 'Wisdom';
-    const Design = 'Design';
-    const Philosophy = 'Philosophy';
+    const WISDOM = 'Wisdom';
+    const DESIGN = 'Design';
+    const PHILOSOPHY = 'Philosophy';
 
     private function getLocale(){
         return session('locale', 'en');

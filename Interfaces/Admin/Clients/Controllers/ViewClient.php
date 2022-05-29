@@ -15,7 +15,7 @@ class ViewClient extends Controller
     public function __invoke(Client $client): Response
     {
         if($client->items->isEmpty()){
-            ClientRepository::addItems($client);
+            ClientRepository::addOrUpdateItems($client);
         }
 
         $items = $client->items;

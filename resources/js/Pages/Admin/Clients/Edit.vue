@@ -131,8 +131,8 @@
             const itemLocale = ref("en");
 
             const form = useForm({
-                name: props.client.name,
-                items: props.items
+                // name: props.client.name,
+                // items: props.items
             })
 
             const isLocalActive = (active) => {
