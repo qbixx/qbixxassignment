@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Interfaces\Admin\Clients\Controllers\EditClient;
 use Interfaces\Admin\Clients\Controllers\IndexClients;
 use Interfaces\Admin\Clients\Controllers\StoreClient;
+use Interfaces\Admin\Clients\Controllers\ViewClient;
 use Interfaces\Front\Landing\WelcomeController;
 
 /*
@@ -25,6 +26,11 @@ Route::get('admin/clients', IndexClients::class)->name(RoutesEnum::ADMIN_INDEX_C
 Route::inertia('admin/clients/create', 'Admin/Clients/Create')->name(RoutesEnum::ADMIN_CREATE_CLIENT);
 Route::post('admin/clients/create', StoreClient::class)->name(RoutesEnum::ADMIN_STORE_CLIENT);
 
+Route::get('admin/clients/{client}', ViewClient::class)->name(RoutesEnum::ADMIN_VIEW_CLIENT);
 Route::get('admin/clients/{client}/edit', [EditClient::class, 'edit'])->name(RoutesEnum::ADMIN_EDIT_CLIENT);
 Route::put('admin/clients/{client}/update', [EditClient::class, 'update']);
 
+Route::post('admin/language/{locale}', function ($locale) {
+    session()->put('locale', $locale);
+    return redirect()->back();
+});

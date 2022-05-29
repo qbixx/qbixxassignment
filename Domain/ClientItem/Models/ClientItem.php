@@ -14,7 +14,20 @@ class ClientItem extends Model
 
     public $translatable = ['title', 'paragraph'];
 
+    protected $appends = ['title_locale', 'paragraph_locale'];
+
     const Wisdom = 'Wisdom';
     const Design = 'Design';
     const Philosophy = 'Philosophy';
+
+    public function getTitleLocaleAttribute(){
+        $locale = session('locale') ?? "en";
+        return $this->getTranslation('title', $locale);
+
+    }
+    public function getParagraphLocaleAttribute(){
+        $locale = session('locale') ?? "en";
+        return $this->getTranslation('paragraph', $locale);
+
+    }
 }

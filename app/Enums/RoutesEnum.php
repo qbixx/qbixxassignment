@@ -30,4 +30,9 @@ class RoutesEnum
      * @string
      */
     public const ADMIN_EDIT_CLIENT = 'admin.clients.edit';
+
+    /**
+     * @string
+     */
+    public const ADMIN_VIEW_CLIENT = 'admin.clients.view';
 }

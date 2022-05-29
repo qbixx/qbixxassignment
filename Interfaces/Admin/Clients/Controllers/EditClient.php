@@ -29,7 +29,7 @@ class EditClient extends Controller
         );
     }
 
-    public function update(UpdateClientRequest $request, Client $client)
+    public function update(UpdateClientRequest $request, Client $client): RedirectResponse
     {
         $locales = config('app.available_locales');
 
