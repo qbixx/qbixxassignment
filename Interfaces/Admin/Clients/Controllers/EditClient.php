@@ -31,13 +31,10 @@ class EditClient extends Controller
 
     public function update(UpdateClientRequest $request, Client $client): RedirectResponse
     {
-        $locales = config('app.available_locales');
-
         Client::find($client->id)->update(['name' => $request['name']]);
         $items = $request['items'];
 
         ClientRepository::addItems($client, false, $items);
-
         return redirect()->route(RoutesEnum::ADMIN_INDEX_CLIENTS);
     }
 }

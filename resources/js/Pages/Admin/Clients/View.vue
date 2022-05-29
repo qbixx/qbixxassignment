@@ -18,10 +18,10 @@
                         <h5>{{ item.type }}</h5>
                     </div>
                     <div class="body">
-                        <div class="title">
-                            <h2>{{ item.title_locale }}</h2>
+                        <div class="title ">
+                            <h2 class="text-overflow">{{ item.title_locale }}</h2>
                         </div>
-                        <p>
+                        <p class="">
                             {{item.paragraph_locale }}
                         </p>
 
