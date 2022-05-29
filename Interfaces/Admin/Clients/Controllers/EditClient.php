@@ -18,11 +18,12 @@ class EditClient extends Controller
     public function edit(Client $client): Response
     {
         $locales = config('app.available_locales');
-        if($client->items->isEmpty()){
+        if ($client->items->isEmpty()) {
             ClientRepository::addOrUpdateItems($client);
         }
 
         $items = $client->fresh()->items;
+
         return Inertia::render(
             'Admin/Clients/Edit',
             compact('client', 'locales', 'items')
@@ -35,6 +36,7 @@ class EditClient extends Controller
         $items = $request['items'];
 
         ClientRepository::addOrUpdateItems($client, false, $items);
+
         return redirect()->route(RoutesEnum::ADMIN_INDEX_CLIENTS);
     }
 }

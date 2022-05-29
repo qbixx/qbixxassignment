@@ -18,7 +18,7 @@ class UpdateClientRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'min:4', 'max:30'],
             'items' => ['required', 'array', 'min:3', 'max:3'],
-            'items.*.id' => ['required',],
+            'items.*.id' => ['required'],
             'items.*.type' => ['required', 'string', "in:{$Wisdom},{$Philosophy},{$Design}"],
 
             'items.*.title.en' => ['required', 'string', 'min:4'],
@@ -28,13 +28,11 @@ class UpdateClientRequest extends FormRequest
             'items.*.paragraph.en' => ['required', 'string', 'min:4'],
             'items.*.paragraph.fr' => ['required', 'string', 'min:4'],
             'items.*.paragraph.nl' => ['required', 'string', 'min:4'],
-
         ];
     }
 
     public function messages(): array
     {
-
         return [
             'items.*.type.in' => 'The selected type is invalid.',
 

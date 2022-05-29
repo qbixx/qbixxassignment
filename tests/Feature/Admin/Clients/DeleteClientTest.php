@@ -25,15 +25,12 @@ class DeleteClientTest extends FeatureTest
         $this->assertSame(null, $client->fresh());
     }
 
-
     /**
      * @test
      */
     public function a guest cant update a client with invalid ID (): void
     {
         $this->delete(route(RoutesEnum::ADMIN_DELETE_CLIENT, ['client' => 222]))
-        ->assertStatus(Response::HTTP_NOT_FOUND);
+            ->assertStatus(Response::HTTP_NOT_FOUND);
     }
-
-
 }

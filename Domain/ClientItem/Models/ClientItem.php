@@ -10,29 +10,34 @@ use Spatie\Translatable\HasTranslations;
 
 class ClientItem extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasFactory;
+    use HasTranslations;
+
+    public const WISDOM = 'Wisdom';
+    public const DESIGN = 'Design';
+    public const PHILOSOPHY = 'Philosophy';
 
     public $translatable = ['title', 'paragraph'];
 
     protected $appends = ['title_locale', 'paragraph_locale', 'type_locale'];
 
-    const WISDOM = 'Wisdom';
-    const DESIGN = 'Design';
-    const PHILOSOPHY = 'Philosophy';
-
-    private function getLocale(){
-        return session('locale', 'en');
-    }
-
-    public function getTitleLocaleAttribute(){
+    public function getTitleLocaleAttribute()
+    {
         return $this->getTranslation('title', $this->getLocale());
     }
 
-    public function getTypeLocaleAttribute(){
+    public function getTypeLocaleAttribute()
+    {
         return __($this->type, [], $this->getLocale());
     }
 
-    public function getParagraphLocaleAttribute(){
+    public function getParagraphLocaleAttribute()
+    {
         return $this->getTranslation('paragraph', $this->getLocale());
+    }
+
+    private function getLocale()
+    {
+        return session('locale', 'en');
     }
 }

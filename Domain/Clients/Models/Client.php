@@ -12,7 +12,8 @@ class Client extends Model
 {
     use HasFactory;
 
-    public function items(){
+    public function items()
+    {
         return $this->hasMany(ClientItem::class);
     }
 }

@@ -15,10 +15,10 @@ class UpdateLocaleTest extends FeatureTest
      */
     public function a guest can update locale (): void
     {
-        $this->post(route(RoutesEnum::LOCALE_UPDATE, ['locale' => "fr"]))
+        $this->post(route(RoutesEnum::LOCALE_UPDATE, ['locale' => 'fr']))
             ->assertRedirect();
 
-        $this->assertSame("fr", session('locale'));
+        $this->assertSame('fr', session('locale'));
     }
 
     /**
@@ -26,8 +26,7 @@ class UpdateLocaleTest extends FeatureTest
      */
     public function a guest cant update a locale with invalid locale(): void
     {
-        $this->post(route(RoutesEnum::LOCALE_UPDATE, ['locale' => "wrong"]))
+        $this->post(route(RoutesEnum::LOCALE_UPDATE, ['locale' => 'wrong']))
             ->assertStatus(Response::HTTP_NOT_FOUND);
     }
-
 }

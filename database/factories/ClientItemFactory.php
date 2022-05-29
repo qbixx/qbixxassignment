@@ -23,8 +23,8 @@ class ClientItemFactory extends Factory
         return [
             'client_id' => Client::factory(),
             'type' => $this->faker->randomElement([ClientItem::DESIGN, ClientItem::PHILOSOPHY, ClientItem::WISDOM]),
-            'paragraph' => ["en"=>"Life is not a problem to be solved, but a reality to be experienced – Soren Kierkegaard xx","fr"=>"La vie n'est pas un problème à résoudre, mais une réalité à vivre – Soren Kierkegaard","nl"=>"Het leven is geen probleem dat moet worden opgelost, maar een realiteit die moet worden ervaren – Soren Kierkegaard"],
-            'title' => ["en" => "Soren Kierkegaard quote xx","fr" => "Soren Kierkegaard citation","nl" => "Soren Kierkegaard citaat"]
+            'paragraph' => ['en' => 'Life is not a problem to be solved, but a reality to be experienced – Soren Kierkegaard xx', 'fr' => "La vie n'est pas un problème à résoudre, mais une réalité à vivre – Soren Kierkegaard", 'nl' => 'Het leven is geen probleem dat moet worden opgelost, maar een realiteit die moet worden ervaren – Soren Kierkegaard'],
+            'title' => ['en' => 'Soren Kierkegaard quote xx', 'fr' => 'Soren Kierkegaard citation', 'nl' => 'Soren Kierkegaard citaat'],
         ];
     }
 }

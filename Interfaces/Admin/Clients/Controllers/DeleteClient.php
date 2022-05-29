@@ -14,6 +14,7 @@ class DeleteClient extends Controller
     public function __invoke(Client $client): RedirectResponse
     {
         $client->delete();
+
         return redirect()->route(RoutesEnum::ADMIN_INDEX_CLIENTS);
     }
 }

@@ -14,7 +14,7 @@ class ViewClient extends Controller
 {
     public function __invoke(Client $client): Response
     {
-        if($client->items->isEmpty()){
+        if ($client->items->isEmpty()) {
             ClientRepository::addOrUpdateItems($client);
         }
 
@@ -22,7 +22,7 @@ class ViewClient extends Controller
         $currentLocale = session('locale', 'en');
         $locales = config('app.available_locales');
 
-        $buttonTranslation = __("ButtonText", [], $currentLocale);
+        $buttonTranslation = __('ButtonText', [], $currentLocale);
 
         return Inertia::render(
             'Admin/Clients/View',
