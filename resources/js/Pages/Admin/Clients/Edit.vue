@@ -99,7 +99,7 @@
             </div>
 
             <div class="flex justify-center">
-                <button type="submit" :disabled="form.processing" class="mt-4
+                <button type="submit" :disabled="form.processing" class="mt-4 mb-4
                 px-6 py-2 border-2 border-blue-600 bg-blue-600 border-blue-600 text-white
             leading-tight font-bold rounded hover:bg-blue-500 focus:outline-none focus:ring-0
             transition duration-150 ease-in-out">

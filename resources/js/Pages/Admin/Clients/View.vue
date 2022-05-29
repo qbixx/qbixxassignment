@@ -15,7 +15,7 @@
             <div class="items">
                 <div v-for="item, key in items" :key="key" class="item">
                     <div class="head" :class="item.type">
-                        <h5>{{ item.type }}</h5>
+                        <h5>{{ item.type_locale }}</h5>
                     </div>
                     <div class="body">
                         <div class="title ">
@@ -26,7 +26,7 @@
                         </p>
 
                         <div class="footer">
-                            <button>Just a Button</button>
+                            <button>{{ buttonTranslation }}</button>
                         </div>
                     </div>
                 </div>
@@ -52,21 +52,15 @@
             items: Array,
             locales: Array,
             currentLocale: String,
+            buttonTranslation: String,
         },
 
         setup(props) {
 
             const locale = ref(props.currentLocale)
-
-            const form = useForm({
-            })
-
+            const form = useForm({})
             const changeLocale = () => {
-
-                console.log(locale.value)
-                console.log('>>>>>>>>>>>')
                 form.post(`/admin/language/${locale.value}`)
-                console.log('done >>>>')
             }
 
             return {changeLocale, locale}

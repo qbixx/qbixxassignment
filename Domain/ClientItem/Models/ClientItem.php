@@ -14,20 +14,25 @@ class ClientItem extends Model
 
     public $translatable = ['title', 'paragraph'];
 
-    protected $appends = ['title_locale', 'paragraph_locale'];
+    protected $appends = ['title_locale', 'paragraph_locale', 'type_locale'];
 
     const Wisdom = 'Wisdom';
     const Design = 'Design';
     const Philosophy = 'Philosophy';
 
-    public function getTitleLocaleAttribute(){
-        $locale = session('locale') ?? "en";
-        return $this->getTranslation('title', $locale);
-
+    private function getLocale(){
+        return session('locale', 'en');
     }
-    public function getParagraphLocaleAttribute(){
-        $locale = session('locale') ?? "en";
-        return $this->getTranslation('paragraph', $locale);
 
+    public function getTitleLocaleAttribute(){
+        return $this->getTranslation('title', $this->getLocale());
+    }
+
+    public function getTypeLocaleAttribute(){
+        return __($this->type, [], $this->getLocale());
+    }
+
+    public function getParagraphLocaleAttribute(){
+        return $this->getTranslation('paragraph', $this->getLocale());
     }
 }

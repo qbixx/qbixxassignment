@@ -19,12 +19,14 @@ class ViewClient extends Controller
         }
 
         $items = $client->items;
-        $currentLocale = session('locale') ?? 'en';
+        $currentLocale = session('locale', 'en');
         $locales = config('app.available_locales');
+
+        $buttonTranslation = __("ButtonText", [], $currentLocale);
 
         return Inertia::render(
             'Admin/Clients/View',
-            compact('client', 'items', 'currentLocale', 'locales')
+            compact('client', 'items', 'currentLocale', 'locales', 'buttonTranslation')
         );
     }
 }
