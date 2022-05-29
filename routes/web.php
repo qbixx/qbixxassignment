@@ -8,6 +8,7 @@ use Interfaces\Admin\Clients\Controllers\DeleteClient;
 use Interfaces\Admin\Clients\Controllers\EditClient;
 use Interfaces\Admin\Clients\Controllers\IndexClients;
 use Interfaces\Admin\Clients\Controllers\StoreClient;
+use Interfaces\Admin\Clients\Controllers\UpdateLocale;
 use Interfaces\Admin\Clients\Controllers\ViewClient;
 use Interfaces\Front\Landing\WelcomeController;
 
@@ -34,11 +35,9 @@ Route::group(['prefix' => 'admin'], function(){
     Route::put('/clients/{client}', [EditClient::class, 'update'])->name(RoutesEnum::ADMIN_UPDATE_CLIENT);
     Route::delete('/clients/{client}', DeleteClient::class)->name(RoutesEnum::ADMIN_DELETE_CLIENT);
 
-    Route::post('/language/{locale}', function ($locale) {
-        session()->put('locale', $locale);
-        return redirect()->back();
-    });
-
+    Route::post('/language/{locale}', UpdateLocale::class)
+        ->name(RoutesEnum::LOCALE_UPDATE)
+        ->where('locale', '[en,fr,nl]+');
 });
 
 

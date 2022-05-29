@@ -19,7 +19,7 @@ class DeleteClientTest extends FeatureTest
 
         $this->assertSame(3, $client->items()->count());
 
-        $this->json('DELETE', route(RoutesEnum::ADMIN_DELETE_CLIENT, ['client' => $client->id]))
+        $this->delete(route(RoutesEnum::ADMIN_DELETE_CLIENT, ['client' => $client->id]))
             ->assertRedirect(route(RoutesEnum::ADMIN_INDEX_CLIENTS));
 
         $this->assertSame(null, $client->fresh());

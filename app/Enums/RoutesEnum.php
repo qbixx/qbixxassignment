@@ -45,4 +45,9 @@ class RoutesEnum
      * @string
      */
     public const ADMIN_VIEW_CLIENT = 'admin.clients.view';
+
+    /**
+     * @string
+     */
+    public const LOCALE_UPDATE = 'locale.update';
 }
