@@ -18,7 +18,7 @@ class ViewClient extends Controller
             ClientRepository::addOrUpdateItems($client);
         }
 
-        $items = $client->items;
+        $items = $client->fresh()->items;
         $currentLocale = session('locale', 'en');
         $locales = config('app.available_locales');
 
