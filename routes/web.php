@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Enums\RoutesEnum;
 use Illuminate\Support\Facades\Route;
+use Interfaces\Admin\Clients\Controllers\DeleteClient;
 use Interfaces\Admin\Clients\Controllers\EditClient;
 use Interfaces\Admin\Clients\Controllers\IndexClients;
 use Interfaces\Admin\Clients\Controllers\StoreClient;
@@ -29,6 +30,7 @@ Route::post('admin/clients/create', StoreClient::class)->name(RoutesEnum::ADMIN_
 Route::get('admin/clients/{client}', ViewClient::class)->name(RoutesEnum::ADMIN_VIEW_CLIENT);
 Route::get('admin/clients/{client}/edit', [EditClient::class, 'edit'])->name(RoutesEnum::ADMIN_EDIT_CLIENT);
 Route::put('admin/clients/{client}/update', [EditClient::class, 'update']);
+Route::delete('admin/clients/{client}/delete', DeleteClient::class);
 
 Route::post('admin/language/{locale}', function ($locale) {
     session()->put('locale', $locale);
