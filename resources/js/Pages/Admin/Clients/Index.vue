@@ -77,7 +77,7 @@
 
             const deleteClient = (client) => {
                 if(confirm('Are you sure you want to delete this client?')) {
-                    form.delete(`/admin/clients/${client.id}/delete`)
+                    form.delete(`/admin/clients/${client.id}`)
                 } else {event.preventDefault();}
             }
 
