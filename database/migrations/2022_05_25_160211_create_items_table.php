@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')->constrained()->cascadeOnDelete();
-            $table->string('title');
-            $table->text('paragraph');
+            $table->json('title');
+            $table->json('paragraph');
             $table->enum('type', ['Wisdom', 'Philosophy', 'Design']);
             $table->timestamps();
         });
