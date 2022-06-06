@@ -25,4 +25,24 @@ class RoutesEnum
      * @string
      */
     public const FRONT_WELCOME = 'front.welcome';
+
+    /**
+     * string
+     */
+    public const ADMIN_EDIT_CLIENT = 'admin.client.edit';
+
+    /**
+     * string
+     */
+    public const ADMIN_UPDATE_CLIENT = 'admin.client.update';
+
+    /**
+     * string
+     */
+    public const ADMIN_DELETE_CLIENT = 'admin.client.delete';
+
+    /**
+     * string
+     */
+    public const ADMIN_VIEW_CLIENT = 'admin.client.show';
 }

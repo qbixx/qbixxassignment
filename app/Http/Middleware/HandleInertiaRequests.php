@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
-use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Illuminate\Http\Request;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -36,6 +36,13 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
+
+            'availableLanguages' => config('app.locales'),
+            'locale' => $request->session()->get('locale'),
+            'flash' => [
+                'message' => $request->session()->get('message'),
+                'error' => $request->session()->get('error')
+            ]
         ]);
     }
 }

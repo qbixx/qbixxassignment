@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace Interfaces\Admin\Clients\Controllers;
 
-use App\Http\Controllers\Controller;
-use Domain\Clients\Models\Client;
 use Inertia\Inertia;
 use Inertia\Response;
+use Domain\Clients\Models\Type;
+use App\Http\Controllers\Controller;
 
-class IndexClients extends Controller
+class CreateClient extends Controller
 {
     /**
      * @return Response
      */
     public function __invoke(): Response
     {
-        $clients = Client::with('items.type')->get();
+        $itemTypes = Type::all();
 
         return Inertia::render(
-            'Admin/Clients/Index',
-            compact('clients'),
+            'Admin/Clients/Create',
+            compact('itemTypes'),
         );
     }
 }

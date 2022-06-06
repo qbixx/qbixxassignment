@@ -83,6 +83,12 @@ return [
     |
     */
 
+    'locales' => [
+        'en' => 'English',
+        'nl' => 'Dutch',
+        'fr' => 'French',
+    ],
+
     'locale' => 'en',
 
     /*

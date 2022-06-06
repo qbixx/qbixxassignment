@@ -20,7 +20,7 @@ class ClientFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->company,
+            'name' => $this->faker->name(),
         ];
     }
 }

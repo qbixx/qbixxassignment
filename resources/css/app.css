@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,4 +7,41 @@
 .bg-dark {
     background: rgb(43,51,58);
     background: radial-gradient(at bottom, rgba(43,51,58,1) 0%, rgba(23,27,32,1) 100%);
+}
+
+.text-montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.show-bg {
+    background-color: #575F65;
+}
+
+.btn-bg select option {
+    font-size: 14px;
+    font-width: bold;
+}
+
+.details-text {
+    font-size: 20px;
+}
+
+.btn-bg {
+    background-color: #249EEA;
+    border-color: #249EEA;
+}
+
+.details-title {
+    font-size: 3.125rem;
+}
+
+@media (max-width: 1200px) {
+    .details-title {
+        font-size: 1.875rem;
+    }
+}
+
+.fs-16 {
+    font-size: 1rem;
 }
