@@ -23,7 +23,9 @@ use Interfaces\Admin\Clients\Controllers\UpdateClient;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', function () {
+    return redirect()->to('/' . session('locale', 'en'));
+});
 Route::group(
     ['prefix' => '{locale}', 'where' => ['locale' => '[a-zA-Z]{2}']],
     function () {
