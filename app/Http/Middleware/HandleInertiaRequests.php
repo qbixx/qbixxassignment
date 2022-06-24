@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
+use App\Enums\LocaleEnum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Lang;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -35,7 +38,18 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        return array_merge(parent::share($request), [
-        ]);
+        $locale = App::getLocale();
+
+        $availableLocales = collect(LocaleEnum::cases())->map(function (LocaleEnum $locale) {
+            return [
+                'value' => $locale->value,
+                'text' => Lang::get('qbixxassignment.language', [], $locale->value),
+            ];
+        })->all();
+
+        return array_merge(
+            parent::share($request),
+            compact(['locale', 'availableLocales'])
+        );
     }
 }

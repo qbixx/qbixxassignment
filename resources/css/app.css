@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './fonts.css';
+
 .bg-dark {
     background: rgb(43,51,58);
     background: radial-gradient(at bottom, rgba(43,51,58,1) 0%, rgba(23,27,32,1) 100%);

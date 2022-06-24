@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <nav class="navbar navbar-light navbar-expand-lg relative flex w-full flex-wrap items-center justify-between bg-gray-100 py-4 text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700">
+    <nav class="z-10 navbar navbar-light navbar-expand-lg relative flex w-full flex-wrap items-center justify-between bg-gray-100 py-4 text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700">
       <div class="container-fluid flex w-full flex-wrap items-center justify-between px-6">
         <div id="navbarSupportedContent" class="collapse navbar-collapse flex-grow items-center">
           <a class="mt-2 mr-1 flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 lg:mt-0" href="#" />
