@@ -1,25 +1,23 @@
 <template>
-    <div class="w-full">
-        <nav class="relative w-full flex flex-wrap items-center justify-between py-4 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light">
-            <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
-                <div class="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent">
-                    <a class="flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 mt-2 lg:mt-0 mr-1" href="#">
+  <div class="w-full">
+    <nav class="navbar navbar-light navbar-expand-lg relative flex w-full flex-wrap items-center justify-between bg-gray-100 py-4 text-gray-500 shadow-lg hover:text-gray-700 focus:text-gray-700">
+      <div class="container-fluid flex w-full flex-wrap items-center justify-between px-6">
+        <div id="navbarSupportedContent" class="collapse navbar-collapse flex-grow items-center">
+          <a class="mt-2 mr-1 flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 lg:mt-0" href="#" />
+          <ul class="list-style-none navbar-nav mr-auto flex flex-col pl-0">
+            <li class="nav-item p-2">
+              <Link href="/admin/clients" class="nav-link p-0 text-gray-500 hover:text-gray-700 focus:text-gray-700">Clients</Link>
+            </li>
+          </ul>
+          <ul class="list-style-none navbar-nav right-0 flex flex-col pl-0">
+            <li class="nav-item p-2">
+              <a href="/" class="nav-link p-0 text-gray-500 hover:text-gray-700 focus:text-gray-700">To the front end</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-                    </a>
-                    <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
-                        <li class="nav-item p-2">
-                            <Link href="/admin/clients" class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0">Clients</Link>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav flex flex-col pl-0 list-style-none right-0">
-                        <li class="nav-item p-2">
-                            <a href="/" class="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0">To the front end</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <slot />
-    </div>
+    <slot />
+  </div>
 </template>

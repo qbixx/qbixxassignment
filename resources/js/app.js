@@ -6,15 +6,15 @@ window.axios = require('axios')
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 createInertiaApp({
-    title: title => `${title} - Qbixx Assignment`,
-    resolve: name => require(`./Pages/${name}`),
-    setup({el, App, props, plugin}) {
-        createApp({render: () => h(App, props)})
-            .use(plugin)
-            .component('Head', Head)
-            .component('Link', Link)
-            .mount(el)
-    },
+  title: title => `${title} - Qbixx Assignment`,
+  resolve: name => require(`./Pages/${name}`),
+  setup({el, App, props, plugin}) {
+    createApp({render: () => h(App, props)})
+      .use(plugin)
+      .component('Head', Head)
+      .component('Link', Link)
+      .mount(el)
+  },
 })
 
 InertiaProgress.init()
