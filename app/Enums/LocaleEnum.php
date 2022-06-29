@@ -11,6 +11,20 @@ enum LocaleEnum: string
     case EN = 'en';
     case NL = 'nl';
     case FR = 'fr';
+    public function label(): string
+    {
+        return static::getLabel($this);
+    }
+
+    public function getLabel(self $value): string
+    {
+        return match ($value) {
+            LocaleEnum::EN => 'English',
+            LocaleEnum::NL => 'Nederlands',
+            LocaleEnum::FR => 'Français',
+        };
+    }
+
     public function getTranslation(?LocaleEnum $locale = null): string
     {
         return Translator::getTranslation('qbixxassignment.language', $locale);

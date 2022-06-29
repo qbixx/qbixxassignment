@@ -52,7 +52,7 @@ const selectedLocale = ref(availableLocales.find(availableLocale => availableLoc
               v-slot="{ active }" as="template" :value="availableLocale"
             >
               <li class="relative text-blue-600 cursor-default select-none px-8 py-2 text-left">
-                <span class="font-bold block truncate">{{ availableLocale.text }}</span>
+                <span class="font-bold block truncate">{{ availableLocale.label }}</span>
                 <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                   <GlobeAltIcon :class="[active ? 'visible' : 'invisible', 'h-5 w-5']" aria-hidden="true" />
                 </span>

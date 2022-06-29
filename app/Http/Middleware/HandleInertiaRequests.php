@@ -44,6 +44,7 @@ class HandleInertiaRequests extends Middleware
             return [
                 'value' => $locale->value,
                 'text' => Lang::get('qbixxassignment.language', [], $locale->value),
+                'label' => $locale->label(),
             ];
         })->all();
 

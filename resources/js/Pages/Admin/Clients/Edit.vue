@@ -48,7 +48,7 @@ const submit = () => {
               <span v-if="form.errors[availableLocale.value]" class="absolute -top-1 -right-5 flex flex-no-shrink items-center justify-center bg-red-500 text-white rounded-full text-xs h-4 w-4">
                 E
               </span>
-              {{ availableLocale.text }}
+              {{ availableLocale.value.toUpperCase() }}
             </span>
           </button>
         </nav>
