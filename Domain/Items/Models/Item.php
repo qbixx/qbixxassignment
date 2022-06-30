@@ -8,12 +8,14 @@ use Domain\Clients\Models\Client;
 use Domain\Items\Enums\ItemType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Interfaces\Traits\HasTranslations;
 
 class Item extends Model
 {
     use HasFactory;
     use HasTranslations;
+    use SoftDeletes;
 
     public $translatable = ['title', 'paragraph'];
 
