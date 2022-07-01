@@ -1,5 +1,3 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
-
 module.exports = {
     content: [
         './resources/**/*.blade.php',
@@ -14,7 +12,7 @@ module.exports = {
         'text-lime-600',
         'text-orange-600',
         'text-rose-600',
-      ],
+    ],
     theme: {
         extend: {
             fontFamily: {
@@ -43,9 +41,9 @@ module.exports = {
                     100: "#dbeafe",
                     200: "#bfdbfe",
                     300: "#93c5fd",
-                    400: "#4299e1",//"#60a5fa",
-                    500: "#2b6cb0",//"#3b82f6",
-                    600: "#249EEA",//"#2563eb",
+                    400: "#4299e1",
+                    500: "#2b6cb0",
+                    600: "#249EEA",
                     700: "#1d4ed8",
                     800: "#1e40af",
                     900: "#1e3a8a"

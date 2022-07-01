@@ -16,6 +16,7 @@ class UpdateClientRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:4', 'max:30'],
+            'items' => ['required', 'array', 'size:3'],
             'items.*.id' => ['integer', 'nullable'],
             'items.*.client_id' => ['required', 'integer'],
             'items.*.type' => ['required', new Enum(ItemType::class)],

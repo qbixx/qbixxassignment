@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Interfaces\Admin\Clients\Controllers;
 
 use App\Enums\RoutesEnum;
+use App\Exceptions\ClientItemsCountException;
 use App\Http\Controllers\Controller;
 use App\Services\Translator;
 use Domain\Clients\Models\Client;
@@ -28,6 +29,10 @@ class ShowClient extends Controller
                 Item::factory()->makeDefault(ItemType::Philosophy, $client),
                 Item::factory()->makeDefault(ItemType::Design, $client),
             ]);
+        }
+
+        if ($items->count() !== 3) {
+            throw new ClientItemsCountException();
         }
 
         $itemTypes = collect(ItemType::cases())->mapWithKeys(function (ItemType $itemType) {
