@@ -12,9 +12,9 @@ const props = defineProps({
 const locale = usePage().props.value.locale
 const availableLocales = usePage().props.value.availableLocales
 
-const getLanguage = (newLocale) => Inertia.get(
+const getLanguage = (newLocale) => Inertia.post(
   props.url,
-  { locale: newLocale }, 
+  { locale: newLocale },
   { preserveScroll: true },
 )
 

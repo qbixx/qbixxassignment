@@ -20,15 +20,20 @@ class Localization
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Session::has('locale')) {
-            App::setLocale(Session::get('locale'));
-        }
+        $locale = config('app.locale');
 
         if ($request->has('locale')) {
             $locale = $request->get('locale');
-            App::setLocale($locale);
-            Session::put('locale', $locale);
+        } elseif (Session::has('locale')) {
+            $locale = Session::get('locale');
         }
+
+        if (! in_array($locale, config('app.available_locales'))) {
+            $locale = config('app.locale');
+        }
+
+        Session::put('locale', $locale);
+        App::setLocale($locale);
 
         return $next($request);
     }

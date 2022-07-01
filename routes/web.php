@@ -31,7 +31,7 @@ Route::inertia('admin/clients/create', 'Admin/Clients/Create')->name(RoutesEnum:
 
 Route::post('admin/clients/create', StoreClient::class)->name(RoutesEnum::ADMIN_STORE_CLIENT);
 
-Route::get('admin/clients/show/{client}', ShowClient::class)->name(RoutesEnum::ADMIN_SHOW_CLIENT);
+Route::match(['get', 'post'], 'admin/clients/show/{client}', ShowClient::class)->name(RoutesEnum::ADMIN_SHOW_CLIENT);
 
 Route::get('admin/clients/edit/{client}', EditClient::class)->name(RoutesEnum::ADMIN_EDIT_CLIENT);
 
