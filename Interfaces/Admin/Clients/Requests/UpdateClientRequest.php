@@ -46,18 +46,14 @@ class UpdateClientRequest extends FormRequest
                     'items.*.paragraph.'.$locale->value,
                 ];
 
-                $keyErrors = collect($keys)->mapWithKeys(
-                    fn ($key) => [$key => $validator->errors()->has($key)]
-                );
-
-                $hasKeyErrors = $keyErrors->filter(
-                    fn ($keyError) => ($keyError === true)
-                )->count();
+                $hasKeyErrors = collect($keys)->filter(
+                    fn ($key) => $validator->errors()->has($key)
+                )->isNotEmpty();
 
                 if ($hasKeyErrors) {
                     $validator->errors()->add(
                         $locale->value,
-                        'This '.$locale->getTranslation().' has errors.'
+                        'The language '.$locale->label().' has errors.'
                     );
                 }
             });

@@ -1,16 +1,10 @@
-<script>
+<script setup>
 import AdminLayout from '@/js/Layouts/AdminLayout.vue'
 import { Link as TheLink } from '@inertiajs/inertia-vue3'
 
-export default {
-  components: {
-    AdminLayout,
-    TheLink,
-  },
-  props: {
-    clients: Object,
-  },
-}
+defineProps({
+  clients: Object,
+})
 </script>
 
 <template>

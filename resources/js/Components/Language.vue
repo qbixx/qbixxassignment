@@ -25,18 +25,22 @@ const selectedLocale = ref(availableLocales.find(availableLocale => availableLoc
   <div class="w-44 mx-auto">
     <Listbox v-model="selectedLocale" as="div" @update:model-value="() => getLanguage(selectedLocale.value)">
       <div class="mt-1 relative text-right">
-        <ListboxButton
-          class="relative hidden lg:inline-block lg:w-44 px-8 py-2 text-left cursor-default text-white border-2 border-blue-600 bg-blue-600 hover:bg-white hover:text-blue-600 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400/50"
-        >
-          <span class="text-base font-bold block truncate">{{ selectedLocale.text }}</span>
-          <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-            <GlobeAltIcon class="h-5 w-5" aria-hidden="true" />
-          </span>
+        <ListboxButton>
+          <div
+            class="relative hidden lg:block lg:w-44 px-8 py-2 text-left text-white border-2 border-blue-600 bg-blue-600 hover:bg-white hover:text-blue-600 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400/50"
+          >
+            <span class="font-bold block truncate">{{ selectedLocale.text }}</span>
+            <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+              <GlobeAltIcon class="h-5 w-5" aria-hidden="true" />
+            </span>
+          </div>
         </ListboxButton>
 
-        <ListboxButton class="relative lg:hidden w-[2.25rem] h-[2.25rem] text-white border-2 border-blue-600 bg-blue-600 hover:bg-white hover:text-blue-600 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400/50">
-          <div class="absolute inset-0 flex items-center pointer-events-none">
-            <GlobeAltIcon class="h-5 w-5 mx-auto" aria-hidden="true" />
+        <ListboxButton>
+          <div class="relative lg:hidden w-[2.25rem] h-[2.25rem] text-white border-2 border-blue-600 bg-blue-600 hover:bg-white hover:text-blue-600 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400/50">
+            <div class="absolute inset-0 flex items-center">
+              <GlobeAltIcon class="h-5 w-5 mx-auto" aria-hidden="true" />
+            </div>
           </div>
         </ListboxButton>
 

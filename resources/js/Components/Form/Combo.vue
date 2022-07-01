@@ -1,3 +1,45 @@
+<script setup>
+import { ref, computed, watch, watchEffect } from 'vue'
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxButton,
+  ComboboxOptions,
+  ComboboxOption,
+  TransitionRoot,
+} from '@headlessui/vue'
+import { SelectorIcon } from '@heroicons/vue/solid'
+
+const props = defineProps({
+  modelValue: String,
+  options: Array,
+})
+
+const emit = defineEmits(['update:modelValue'])
+
+const selected = ref('')
+const query = ref('')
+
+const filteredOptions = computed(() =>
+  query.value === ''
+    ? props.options
+    : props.options.filter((option) =>
+      option.text
+        .toLowerCase()
+        .replace(/\s+/g, '')
+        .includes(query.value.toLowerCase().replace(/\s+/g, '')),
+    ),
+)
+
+watchEffect(() => {
+  selected.value = props.options.find((option) => option.value === props.modelValue)
+})
+
+watch(selected, (newSelected) => {
+  emit('update:modelValue', newSelected.value)
+})
+</script>
+
 <template>
   <div class="">
     <Combobox v-model="selected">
@@ -57,45 +99,3 @@
     </Combobox>
   </div>
 </template>
-
-<script setup>
-import { ref, computed, watch, watchEffect } from 'vue'
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxButton,
-  ComboboxOptions,
-  ComboboxOption,
-  TransitionRoot,
-} from '@headlessui/vue'
-import { SelectorIcon } from '@heroicons/vue/solid'
-
-const props = defineProps({
-  modelValue: String,
-  options: Array, // [{ value: '...', text: '...'}, ...]
-})
-
-const emit = defineEmits(['update:modelValue'])
-
-const selected = ref('')
-const query = ref('')
-
-const filteredOptions = computed(() =>
-  query.value === ''
-    ? props.options
-    : props.options.filter((option) =>
-      option.text
-        .toLowerCase()
-        .replace(/\s+/g, '')
-        .includes(query.value.toLowerCase().replace(/\s+/g, '')),
-    ),
-)
-
-watchEffect(() => {
-  selected.value = props.options.find((option) => option.value === props.modelValue)
-})
-
-watch(selected, (newSelected) => {
-  emit('update:modelValue', newSelected.value)
-})
-</script>
