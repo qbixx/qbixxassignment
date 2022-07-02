@@ -14,7 +14,7 @@ const form = useForm({
 
     <div class="flex w-full justify-center py-8">
       <div class="block w-1/3 rounded-lg bg-white p-6 shadow-lg">
-        <form method="POST" @submit.prevent="form.post('/admin/clients/create')">
+        <form method="POST" @submit.prevent="form.post('/admin/clients')">
           <div class="form-group mb-6">
             <label for="name" class="form-label mb-2 inline-block text-gray-700"> Name </label>
             <input id="name" v-model="form.name" name="name" type="text" placeholder="Enter client name" class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none" />

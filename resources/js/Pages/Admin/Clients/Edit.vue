@@ -23,7 +23,7 @@ const form = useForm({
 })
 
 const submit = () => {
-  const url = `/admin/clients/edit/${props.client.id}`
+  const url = `/admin/clients/${props.client.id}`
 
   form.put(url, {
     onSuccess: () => form.reset(),

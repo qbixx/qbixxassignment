@@ -13,7 +13,7 @@ class StoreClientTest extends FeatureTest
     /**
      * @test
      */
-    public function a guest can store a new client(): void
+    public function an admin can store a new client(): void
     {
         $formData = [
             'name' => 'Test name',

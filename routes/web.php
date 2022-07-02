@@ -29,12 +29,12 @@ Route::get('admin/clients', IndexClients::class)->name(RoutesEnum::ADMIN_INDEX_C
 
 Route::inertia('admin/clients/create', 'Admin/Clients/Create')->name(RoutesEnum::ADMIN_CREATE_CLIENT);
 
-Route::post('admin/clients/create', StoreClient::class)->name(RoutesEnum::ADMIN_STORE_CLIENT);
+Route::post('admin/clients', StoreClient::class)->name(RoutesEnum::ADMIN_STORE_CLIENT);
 
-Route::match(['get', 'post'], 'admin/clients/show/{client}', ShowClient::class)->name(RoutesEnum::ADMIN_SHOW_CLIENT);
+Route::match(['get', 'post'], 'admin/clients/{client}', ShowClient::class)->name(RoutesEnum::ADMIN_SHOW_CLIENT);
 
-Route::get('admin/clients/edit/{client}', EditClient::class)->name(RoutesEnum::ADMIN_EDIT_CLIENT);
+Route::get('admin/clients/{client}/edit', EditClient::class)->name(RoutesEnum::ADMIN_EDIT_CLIENT);
 
-Route::put('admin/clients/edit/{client}', UpdateClient::class)->name(RoutesEnum::ADMIN_UPDATE_CLIENT);
+Route::put('admin/clients/{client}', UpdateClient::class)->name(RoutesEnum::ADMIN_UPDATE_CLIENT);
 
-Route::delete('admin/clients/delete/{client}', DestroyClient::class)->name(RoutesEnum::ADMIN_DESTROY_CLIENT);
+Route::delete('admin/clients/{client}', DestroyClient::class)->name(RoutesEnum::ADMIN_DESTROY_CLIENT);
