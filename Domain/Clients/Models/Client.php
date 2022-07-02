@@ -15,6 +15,13 @@ class Client extends Model
     use SoftDeletes;
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['items'];
+
+    /**
      * Get the items for the client.
      */
     public function items()
