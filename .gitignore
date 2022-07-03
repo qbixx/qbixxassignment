@@ -19,3 +19,4 @@ yarn-error.log
 /.vscode
 /sailmysql
 /public/mix-manifest.json
+/public/build

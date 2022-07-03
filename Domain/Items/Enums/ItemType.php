@@ -9,9 +9,6 @@ use App\Services\Translator;
 
 enum ItemType: string
 {
-    case Wisdom = 'wisdom';
-    case Philosophy = 'philosophy';
-    case Design = 'design';
     public function getConfig(): array
     {
         return config('qbixxassignment.items.'.$this->value);
@@ -26,4 +23,7 @@ enum ItemType: string
     {
         return Translator::getTranslations('qbixxassignment.items.'.$this->value.'.type');
     }
+    case Wisdom = 'wisdom';
+    case Philosophy = 'philosophy';
+    case Design = 'design';
 }

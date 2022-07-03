@@ -8,9 +8,6 @@ use App\Services\Translator;
 
 enum LocaleEnum: string
 {
-    case EN = 'en';
-    case NL = 'nl';
-    case FR = 'fr';
     public function label(): string
     {
         return static::getLabel($this);
@@ -34,4 +31,7 @@ enum LocaleEnum: string
     {
         return Translator::getTranslations('qbixxassignment.language');
     }
+    case EN = 'en';
+    case NL = 'nl';
+    case FR = 'fr';
 }

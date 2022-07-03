@@ -6,7 +6,7 @@
 
         <title>@yield('title') - Qbixx test</title>
 
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        @vite(['resources/css/app.css'])
     </head>
 
     <body class="antialiased font-sans font-normal text-gray-700 leading-normal">
