@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Interfaces\Admin\Clients\Controllers;
 
-use App\Enums\RoutesEnum;
 use App\Exceptions\ClientItemsCountException;
 use App\Http\Controllers\Controller;
 use App\Services\Translator;
@@ -20,8 +19,6 @@ class ShowClient extends Controller
 {
     public function __invoke(Client $client): Response
     {
-        $url = route(RoutesEnum::ADMIN_SHOW_CLIENT, ['client' => $client->id]);
-
         $items = $client->items;
         if (! $items->count()) {
             $items = ShowItemResource::collection([
@@ -54,7 +51,7 @@ class ShowClient extends Controller
 
         return Inertia::render(
             'Admin/Clients/Show',
-            compact(['url', 'client', 'items', 'itemTypes', 'translations'])
+            compact(['client', 'items', 'itemTypes', 'translations'])
         );
     }
 }

@@ -8,21 +8,26 @@ use App\Services\Translator;
 
 enum LocaleEnum: string
 {
+    public static function default(): self
+    {
+        return self::from(config('app.locale'));
+    }
+
     public function label(): string
     {
-        return static::getLabel($this);
+        return self::getLabel($this);
     }
 
     public function getLabel(self $value): string
     {
         return match ($value) {
-            LocaleEnum::EN => 'English',
-            LocaleEnum::NL => 'Nederlands',
-            LocaleEnum::FR => 'Français',
+            self::EN => 'English',
+            self::NL => 'Nederlands',
+            self::FR => 'Français',
         };
     }
 
-    public function getTranslation(?LocaleEnum $locale = null): string
+    public function getTranslation(?self $locale = null): string
     {
         return Translator::getTranslation('qbixxassignment.language', $locale);
     }

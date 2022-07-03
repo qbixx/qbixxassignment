@@ -5,16 +5,12 @@ import { usePage } from '@inertiajs/inertia-vue3'
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue'
 import { GlobeAltIcon } from '@heroicons/vue/solid'
 
-const props = defineProps({
-  url: String,
-})
-
 const locale = usePage().props.value.locale
 const availableLocales = usePage().props.value.availableLocales
 
-const getLanguage = (newLocale) => Inertia.post(
-  props.url,
-  { locale: newLocale },
+const getLanguage = (selectedLocale) => Inertia.get(
+  '/language',
+  { locale: selectedLocale },
   { preserveScroll: true },
 )
 

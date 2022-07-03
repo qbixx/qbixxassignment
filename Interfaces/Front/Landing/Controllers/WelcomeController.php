@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Interfaces\Front\Landing;
+namespace Interfaces\Front\Landing\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;

@@ -3,7 +3,6 @@ import { UserCircleIcon } from '@heroicons/vue/solid'
 import TheLanguage from '@/js/Components/Language.vue'
 
 defineProps({
-  url: String,
   client: Object,
 })
 </script>
@@ -36,7 +35,7 @@ defineProps({
         </div>
         <div class="flex-shrink-0 flex justify-end">
           <div>
-            <TheLanguage :url="url" />
+            <TheLanguage />
           </div>
         </div>
       </div>

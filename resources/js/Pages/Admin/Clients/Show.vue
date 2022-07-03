@@ -3,7 +3,6 @@ import FrontLayout from '@/js/Layouts/FrontLayout.vue'
 import TheHeader from '@/js/Components/Header.vue'
 
 defineProps({
-  url: String,
   client: Object,
   items: Object,
   itemTypes: Object,
@@ -15,7 +14,7 @@ defineProps({
   <FrontLayout>
     <Head title="Client" />
         
-    <TheHeader :url="url" :client="client" />
+    <TheHeader :client="client" />
 
     <div class="relative bg-qbixx-gray-500 pt-2 pb-40 px-4">
       <div class="absolute lg:absolute inset-0">
