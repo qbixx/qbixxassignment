@@ -27,7 +27,7 @@ class UpdateClientRequest extends FormRequest
         ];
     }
 
-    public function attributes()
+    public function attributes(): array
     {
         return [
             'items.*.id' => 'ID',

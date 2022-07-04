@@ -14,9 +14,12 @@ class DestroyClient extends Controller
 {
     public function __invoke(Client $client): RedirectResponse
     {
-        DB::transaction(function () use ($client): void {
-            $client->delete();
-        }, 3);
+        DB::transaction(
+            function () use ($client): void {
+                $client->delete();
+            },
+            3
+        );
 
         return redirect()->route(RoutesEnum::ADMIN_INDEX_CLIENTS);
     }

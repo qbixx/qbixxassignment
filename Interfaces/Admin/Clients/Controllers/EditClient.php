@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Interfaces\Admin\Clients\Controllers;
 
+use App\Exceptions\ClientItemsCountException;
 use App\Http\Controllers\Controller;
 use Domain\Clients\Models\Client;
 use Domain\Items\Enums\ItemType;
@@ -26,6 +27,10 @@ class EditClient extends Controller
         }
 
         $items = EditItemResource::collection($items);
+
+        if ($items->count() !== 3) {
+            throw new ClientItemsCountException();
+        }
 
         $itemTypes = collect(ItemType::cases())->map(function (ItemType $itemType) {
             return [

@@ -8,6 +8,7 @@ use Domain\Clients\Models\Client;
 use Domain\Items\Enums\ItemType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Interfaces\Traits\HasTranslations;
 
@@ -31,7 +32,7 @@ class Item extends Model
     /**
      * Get the client that owns the item.
      */
-    public function client()
+    public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);
     }

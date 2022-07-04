@@ -23,6 +23,7 @@ class Localization
     {
         if (Session::has('locale')) {
             $locale = LocaleEnum::tryFrom(Session::get('locale')) ?? LocaleEnum::default();
+
             App::setLocale($locale->value);
         }
 
