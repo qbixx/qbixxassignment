@@ -22,3 +22,6 @@ Building for production
 ```sh
 npm run build
 ```
+
+## v0.0.2
+Update code style and apply improvements.
