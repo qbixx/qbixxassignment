@@ -18,16 +18,11 @@ class EditClient extends Controller
     public function __invoke(Client $client): Response
     {
         $items = $client->items;
-        if (! $items->count()) {
-            $items = [
-                Item::factory()->makeDefault(ItemType::Wisdom, $client),
-                Item::factory()->makeDefault(ItemType::Philosophy, $client),
-                Item::factory()->makeDefault(ItemType::Design, $client),
-            ];
+        if ($items->count() === 0) {
+            $items = Item::factory()->makeDefaults($client);
         }
 
         $items = EditItemResource::collection($items);
-
         if ($items->count() !== 3) {
             throw new ClientItemsCountException();
         }

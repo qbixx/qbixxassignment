@@ -50,4 +50,13 @@ class ItemFactory extends Factory
             ->replaceTranslations('title', $titleTranslations)
             ->replaceTranslations('paragraph', $paragraphTranslations);
     }
+
+    public function makeDefaults(Client $client): array
+    {
+        return [
+            $this->makeDefault(ItemType::Wisdom, $client),
+            $this->makeDefault(ItemType::Philosophy, $client),
+            $this->makeDefault(ItemType::Design, $client),
+        ];
+    }
 }

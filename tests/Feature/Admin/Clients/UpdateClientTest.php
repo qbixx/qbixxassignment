@@ -6,7 +6,6 @@ namespace Tests\Feature\Admin\Clients;
 
 use App\Enums\RoutesEnum;
 use Domain\Clients\Models\Client;
-use Domain\Items\Enums\ItemType;
 use Domain\Items\Models\Item;
 use Illuminate\Http\Request;
 use Interfaces\Admin\Clients\Resources\EditItemResource;
@@ -25,11 +24,7 @@ class UpdateClientTest extends FeatureTest
 
         $name = 'Updated test name';
 
-        $defaultItems = [
-            Item::factory()->makeDefault(ItemType::Wisdom, $client),
-            Item::factory()->makeDefault(ItemType::Philosophy, $client),
-            Item::factory()->makeDefault(ItemType::Design, $client),
-        ];
+        $defaultItems = Item::factory()->makeDefaults($client);
 
         $items = EditItemResource::collection($defaultItems)
             ->response(Request::create(route(RoutesEnum::ADMIN_EDIT_CLIENT, compact('client')), 'GET'))
