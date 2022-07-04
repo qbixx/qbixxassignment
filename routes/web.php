@@ -25,6 +25,7 @@ use Interfaces\Front\Landing\Controllers\WelcomeController;
 */
 
 Route::get('/', WelcomeController::class)->name(RoutesEnum::FRONT_WELCOME);
+
 Route::get('/language', LanguageController::class)->name(RoutesEnum::FRONT_LANGUAGE);
 
 Route::get('admin/clients', IndexClients::class)->name(RoutesEnum::ADMIN_INDEX_CLIENTS);

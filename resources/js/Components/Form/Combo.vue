@@ -48,16 +48,18 @@ watch(selected, (newSelected) => {
           class="relative cursor-default overflow-hidden m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
         >
           <ComboboxInput
-            class="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
             :display-value="(option) => option.text"
+            class="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
             @change="query = $event.target.value"
           />
+          
           <ComboboxButton
             class="absolute inset-y-0 right-0 flex items-center pr-2"
           >
             <SelectorIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
           </ComboboxButton>
         </div>
+
         <TransitionRoot
           leave="transition ease-in duration-100"
           leave-from="opacity-100"

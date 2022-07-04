@@ -17,5 +17,11 @@ defineExpose({ focus: () => input.value.focus() })
 </script>
 
 <template>
-  <input ref="input" class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" />
+  <input 
+    ref="input" 
+    :value="modelValue" 
+    class="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none" 
+    autocomplete="off" 
+    @input="$emit('update:modelValue', $event.target.value)" 
+  />
 </template>
