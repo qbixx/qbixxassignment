@@ -8,13 +8,13 @@ use App\Http\Controllers\Controller;
 use Domain\Clients\Models\Client;
 use Inertia\Inertia;
 use Inertia\Response;
-use Interfaces\Admin\Clients\Resources\IndexClientResource;
+use Interfaces\Admin\Clients\Resources\ShowClientResource;
 
 class IndexClients extends Controller
 {
     public function __invoke(): Response
     {
-        $clients = IndexClientResource::collection(Client::all());
+        $clients = ShowClientResource::collection(Client::all());
 
         return Inertia::render(
             'Admin/Clients/Index',

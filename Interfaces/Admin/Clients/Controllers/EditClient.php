@@ -12,6 +12,7 @@ use Domain\Items\Models\Item;
 use Inertia\Inertia;
 use Inertia\Response;
 use Interfaces\Admin\Clients\Resources\EditItemResource;
+use Interfaces\Admin\Clients\Resources\ShowClientResource;
 
 class EditClient extends Controller
 {
@@ -26,6 +27,8 @@ class EditClient extends Controller
         if ($items->count() !== 3) {
             throw new ClientItemsCountException();
         }
+
+        $client = ShowClientResource::make($client);
 
         $itemTypes = collect(ItemType::cases())->map(function (ItemType $itemType) {
             return [

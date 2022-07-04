@@ -6,7 +6,7 @@ namespace Interfaces\Admin\Clients\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class IndexClientResource extends JsonResource
+class ShowClientResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

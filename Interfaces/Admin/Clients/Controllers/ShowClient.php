@@ -13,6 +13,7 @@ use Domain\Items\Models\Item;
 use Illuminate\Support\Arr;
 use Inertia\Inertia;
 use Inertia\Response;
+use Interfaces\Admin\Clients\Resources\ShowClientResource;
 use Interfaces\Admin\Clients\Resources\ShowItemResource;
 
 class ShowClient extends Controller
@@ -28,6 +29,8 @@ class ShowClient extends Controller
         if ($items->count() !== 3) {
             throw new ClientItemsCountException();
         }
+
+        $client = ShowClientResource::make($client);
 
         $itemTypes = collect(ItemType::cases())->mapWithKeys(function (ItemType $itemType) {
             $config = $itemType->getConfig();
