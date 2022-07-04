@@ -20,7 +20,7 @@ class UpdateClient extends Controller
             function () use ($client, $request): void {
                 $client->update($request->safe(['name']));
 
-                $items = $request->get('items');
+                $items = $request->validated('items');
                 foreach ($items as $item) {
                     $client
                         ->items()

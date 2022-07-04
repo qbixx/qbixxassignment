@@ -15,7 +15,7 @@ class LanguageController extends Controller
 {
     public function __invoke(LanguageRequest $request): RedirectResponse
     {
-        $locale = $request->get('locale');
+        $locale = $request->validated('locale');
 
         Session::put('locale', $locale);
         App::setLocale($locale);
