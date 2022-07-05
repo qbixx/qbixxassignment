@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Items\Models;
 
+use Database\Factories\ItemFactory;
 use Domain\Clients\Models\Client;
 use Domain\Items\Enums\ItemType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -28,6 +29,16 @@ class Item extends Model
     protected $casts = [
         'type' => ItemType::class,
     ];
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return ItemFactory::new();
+    }
 
     /**
      * Get the client that owns the item.

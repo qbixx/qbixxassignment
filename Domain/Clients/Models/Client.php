@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Domain\Clients\Models;
 
+use Database\Factories\ClientFactory;
 use Domain\Items\Models\Item;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -21,6 +22,16 @@ class Client extends Model
      * @var array
      */
     protected $with = ['items'];
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return ClientFactory::new();
+    }
 
     /**
      * Get the items for the client.
