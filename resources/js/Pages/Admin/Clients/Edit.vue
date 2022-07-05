@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { usePage, useForm } from '@inertiajs/inertia-vue3'
+import { Link as TheLink, usePage, useForm } from '@inertiajs/inertia-vue3'
 import AdminLayout from '@/js/Layouts/AdminLayout.vue'
 import TheLabel from '@/js/Components/Form/Label.vue'
 import TheInput from '@/js/Components/Form/Input.vue'
@@ -121,13 +121,14 @@ const submit = () => {
                   There are unsaved form changes.
                 </div>
 
-                <a 
+                <TheLink
                   href="/admin/clients" 
+                  as="button"
                   title="Return to index"
                   class="inline-block px-6 py-2 font-bold leading-tight transition duration-150 ease-in-out focus:outline-none focus:ring-0"
                 >
                   Cancel 
-                </a>
+                </TheLink>
                 
                 <button
                   type="submit" 

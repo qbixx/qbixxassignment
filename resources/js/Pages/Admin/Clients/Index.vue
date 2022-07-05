@@ -13,12 +13,14 @@ defineProps({
 
     <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
       <div class="flex justify-end py-8 px-6">
-        <a 
+        <TheLink
           href="/admin/clients/create" 
+          as="button"
+          title="New client"
           class="inline-block rounded border-2 border-blue-600 border-blue-600 bg-blue-600 px-6 py-2 font-bold leading-tight text-white transition duration-150 ease-in-out hover:bg-blue-500 focus:outline-none focus:ring-0"
         >
           New client 
-        </a>
+        </TheLink>
       </div>
 
       <div class="overflow-hidden">

@@ -36,11 +36,11 @@ class UpdateClientTest extends FeatureTest
         $this->assertSame($this->formData['name'], $client->name);
         $this->assertCount(3, $client->items);
 
-        $client->items->each(function (Item $item, $key): void {
-            $this->assertSame($item->client_id, $this->formData['items'][$key]['client_id']);
-            $this->assertSame($item->type->value, $this->formData['items'][$key]['type']);
+        $client->items->each(function (Item $item, $index): void {
+            $this->assertSame($item->client_id, $this->formData['items'][$index]['client_id']);
+            $this->assertSame($item->type->value, $this->formData['items'][$index]['type']);
 
-            collect(LocaleEnum::cases())->each(function (LocaleEnum $locale) use ($item, $key): void {
+            collect(LocaleEnum::cases())->each(function (LocaleEnum $locale) use ($item, $index): void {
                 $translatables = [
                     'title',
                     'paragraph',
@@ -49,7 +49,7 @@ class UpdateClientTest extends FeatureTest
                 foreach ($translatables as $translatable) {
                     $this->assertSame(
                         $item->getTranslation($translatable, $locale->value),
-                        $this->formData['items'][$key][$translatable][$locale->value]
+                        $this->formData['items'][$index][$translatable][$locale->value]
                     );
                 }
             });

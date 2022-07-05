@@ -15,11 +15,11 @@
                 </h3>
 
                 <a
-                href="{{ route(RoutesEnum::ADMIN_INDEX_CLIENTS) }}" 
-                class="inline-flex items-center px-8 py-2 border border-transparent font-bold rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" 
+                    href="{{ route(RoutesEnum::ADMIN_INDEX_CLIENTS) }}" 
+                    class="inline-flex items-center px-8 py-2 border border-transparent font-bold rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" 
                 >
-                To admin panel
-            </a>
+                    To admin panel
+                </a>
             </div>
 
             <div class="w-2/3 md:w-1/2 mx-auto -mb-8">
