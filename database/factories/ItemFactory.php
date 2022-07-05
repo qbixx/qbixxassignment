@@ -9,6 +9,7 @@ use Domain\Clients\Models\Client;
 use Domain\Items\Enums\ItemType;
 use Domain\Items\Models\Item;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Collection;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Domain\Items\Models>
@@ -51,12 +52,12 @@ class ItemFactory extends Factory
             ->replaceTranslations('paragraph', $paragraphTranslations);
     }
 
-    public function makeDefaults(Client $client): array
+    public function makeDefaults(Client $client): Collection
     {
-        return [
+        return collect([
             $this->makeDefault(ItemType::Wisdom, $client),
             $this->makeDefault(ItemType::Philosophy, $client),
             $this->makeDefault(ItemType::Design, $client),
-        ];
+        ]);
     }
 }

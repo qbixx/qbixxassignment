@@ -4,7 +4,6 @@ import TheHeader from '@/js/Components/Header.vue'
 
 defineProps({
   client: Object,
-  items: Object,
   itemTypes: Object,
   translations: Object,
 })
@@ -25,7 +24,7 @@ defineProps({
         <div class="max-w-7xl mx-auto">
           <div class="mt-12 max-w-lg mx-auto grid gap-16 lg:gap-6 lg:grid-cols-3 lg:max-w-none">
             <div 
-              v-for="item in items" 
+              v-for="item in client.items" 
               :key="item.type" 
               class="flex flex-col bg-white rounded-lg shadow-lg overflow-hidden"
             >

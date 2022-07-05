@@ -14,7 +14,7 @@ class IndexClients extends Controller
 {
     public function __invoke(): Response
     {
-        $clients = ShowClientResource::collection(Client::all());
+        $clients = ShowClientResource::collection(Client::without('items')->get());
 
         return Inertia::render(
             'Admin/Clients/Index',

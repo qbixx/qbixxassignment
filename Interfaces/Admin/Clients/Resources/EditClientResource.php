@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Interfaces\Admin\Clients\Resources;
 
-class ShowClientResource extends ClientResource
+class EditClientResource extends ClientResource
 {
     /**
      * Transform the resource into an array.
@@ -19,7 +19,7 @@ class ShowClientResource extends ClientResource
             'id' => $this->id,
             'name' => $this->name,
             $this->mergeWhen($this->relationLoaded('items'), [
-                'items' => ShowItemResource::collection($this->getItems()),
+                'items' => EditItemResource::collection($this->getItems()),
             ]),
         ];
     }

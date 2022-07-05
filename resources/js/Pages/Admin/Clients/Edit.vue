@@ -10,7 +10,6 @@ import InputError from '@/js/Components/Form/InputError.vue'
 
 const props = defineProps({
   client: Object,
-  items: Object,
   itemTypes: Object,
 })
 
@@ -19,7 +18,7 @@ const locale = ref(usePage().props.value.locale)
 
 const form = useForm({
   name: props.client.name,
-  items: props.items,
+  items: props.client.items,
 })
 
 const submit = () => {
