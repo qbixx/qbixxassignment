@@ -39,7 +39,7 @@ const selectedLocale = ref(availableLocales.find(availableLocale => availableLoc
               <TheButton>
                 <div class="hidden sm:inline-flex items-center font-bold text-sm">
                   <span>{{ selectedLocale.text }}</span>
-                  <span class="ml-2">
+                  <span class="pl-2">
                     <ChevronUpIcon v-if="open" class="h-5 w-5" />
                     <ChevronDownIcon v-else class="h-5 w-5" />
                   </span>
@@ -57,16 +57,16 @@ const selectedLocale = ref(availableLocales.find(availableLocale => availableLoc
 
       <DisclosurePanel>
         <div class="flex pt-4 sm:justify-end">
-          <div class="space-y-1">
+          <div class="space-y-1 mx-1">
             <div v-for="availableLocale in availableLocales" :key="availableLocale.value">
               <DisclosureButton
                 @click="() => getLanguage(availableLocale.value)"
               >
-                <div class="inline-flex ml-2 items-center text-sm font-semibold text-white hover:text-gray-700">
+                <div class="inline-flex items-center text-sm font-semibold text-white hover:text-gray-700">
                   <span :class="[availableLocale.value === selectedLocale.value ? 'text-gray-700' : '']">
                     <CheckIcon class="h-5 w-5" />
                   </span>
-                  <span class="ml-2 text-gray-700">
+                  <span class="pl-2 text-gray-700">
                     {{ availableLocale.label }}
                   </span>
                 </div>
