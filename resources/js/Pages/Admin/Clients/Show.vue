@@ -1,6 +1,7 @@
 <script setup>
 import FrontLayout from '@/js/Layouts/FrontLayout.vue'
 import TheHeader from '@/js/Components/Header.vue'
+import TheButton from '@/js/Components/Button.vue'
 
 defineProps({
   client: Object,
@@ -51,12 +52,9 @@ defineProps({
               </div>
 
               <div class="mt-20">
-                <a 
-                  href="#"
-                  class="inline-flex items-center px-6 py-2 border border-transparent font-bold text-base rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400/50"
-                >
+                <TheButton>
                   {{ translations.just_a_button }}
-                </a>
+                </TheButton>
               </div>
             </div>
           </div>
