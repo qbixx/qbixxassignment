@@ -28,3 +28,6 @@ Update code style and apply improvements.
 
 ## v0.0.3
 Update code style and apply improvements.
+
+## v0.0.4
+Update client view header section.
