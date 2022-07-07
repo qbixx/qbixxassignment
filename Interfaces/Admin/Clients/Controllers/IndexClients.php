@@ -8,13 +8,13 @@ use App\Http\Controllers\Controller;
 use Domain\Clients\Models\Client;
 use Inertia\Inertia;
 use Inertia\Response;
-use Interfaces\Admin\Clients\Resources\ShowClientResource;
+use Interfaces\Admin\Clients\Resources\ClientResource;
 
 class IndexClients extends Controller
 {
     public function __invoke(): Response
     {
-        $clients = ShowClientResource::collection(Client::without('items')->get());
+        $clients = ClientResource::collection(Client::without('items')->get());
 
         return Inertia::render(
             'Admin/Clients/Index',

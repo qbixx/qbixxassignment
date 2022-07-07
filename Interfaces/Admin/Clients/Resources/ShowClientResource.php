@@ -18,9 +18,7 @@ class ShowClientResource extends ClientResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            $this->mergeWhen($this->relationLoaded('items'), [
-                'items' => ShowItemResource::collection($this->getItems()),
-            ]),
+            'items' => ShowItemResource::collection($this->getItems()),
         ];
     }
 }

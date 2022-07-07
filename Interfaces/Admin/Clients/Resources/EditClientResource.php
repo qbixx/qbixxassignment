@@ -18,9 +18,7 @@ class EditClientResource extends ClientResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            $this->mergeWhen($this->relationLoaded('items'), [
-                'items' => EditItemResource::collection($this->getItems()),
-            ]),
+            'items' => EditItemResource::collection($this->getItems()),
         ];
     }
 }
