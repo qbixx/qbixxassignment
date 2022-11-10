@@ -12,5 +12,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(ClientSeeder::class);
         $this->call(LanguageSeeder::class);
+        $this->call(TypeSeeder::class);
     }
 }

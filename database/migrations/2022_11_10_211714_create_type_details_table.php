@@ -18,8 +18,8 @@ return new class extends Migration
         Schema::create('type_details', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('type_id');
-            $table->foreignId('language_id');
+            $table->foreignId('type_id')->references('id')->on('types');;
+            $table->foreignId('language_id')->references('id')->on('languages');;
             $table->timestamps();
         });
     }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('paragraph');
             $table->foreignId('type_detail_id');
             $table->foreignId('item_id')
+                ->references('id')->on('items')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
