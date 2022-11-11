@@ -14,7 +14,7 @@ class Client extends Model
 
     public function items()
     {
-        return $this->hasMany(Item::class,'client_id','id');
+        return $this->hasMany(Item::class,'client_id','id')->with('type');
     }
 
 }
