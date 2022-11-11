@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use Interfaces\API\Clients\Controllers\DeleteClient;
+use App\Enums\RoutesEnum;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('clients/{client}/delete', DeleteClient::class)->name(RoutesEnum::API_DELETE_CLIENTS);
+
+

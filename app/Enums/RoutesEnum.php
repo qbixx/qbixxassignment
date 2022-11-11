@@ -34,5 +34,10 @@ class RoutesEnum
     /**
      * @string
      */
+    public const API_DELETE_CLIENTS = 'api.clients.delete';
+
+    /**
+     * @string
+     */
     public const FRONT_WELCOME = 'front.welcome';
 }
