@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Interfaces\Admin\Clients\Controllers;
 
+use App\Enums\Inertia\ClientView;
 use App\Http\Controllers\Controller;
 use Domain\Clients\Models\Client;
 use Inertia\Inertia;
@@ -16,7 +17,7 @@ class IndexClients extends Controller
         $clients = Client::all();
 
         return Inertia::render(
-            'Admin/Clients/Index',
+            ClientView::ADMIN_INDEX,
             compact('clients'),
         );
     }

@@ -15,17 +15,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('item_details', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('paragraph');
-            $table->foreignId('type_detail_id');
-            $table->foreignId('item_id')
-                ->references('id')->on('items')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreignId('language_id');
+            $table->json('name');
             $table->timestamps();
         });
     }
@@ -37,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_details');
+        Schema::dropIfExists('types');
     }
 };
