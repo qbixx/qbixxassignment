@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Helpers\General;
 use App\Helpers\Helpers;
 use Domain\Languages\Models\Language;
 use Eloquent;
@@ -25,7 +26,12 @@ class AppServiceProvider extends ServiceProvider
             },
             'languages'=>function(){
                 return Language::all();
-            }
+            },
+            'language' => function () {
+                return General::translations(
+                    base_path('lang/'. app()->getLocale() .'.json')
+                );
+            },
         ]);
         Eloquent::unguard();
     }

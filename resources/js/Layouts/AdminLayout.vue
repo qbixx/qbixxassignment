@@ -76,7 +76,7 @@ export default {
         },
         async changeLanguage(lang) {
             await axios.get('/api/languages/' + lang.code);
-            Inertia.reload({ only: ['client','locale'] })
+            Inertia.reload({ only: ['client','locale','language'] })
         }
     }
 }

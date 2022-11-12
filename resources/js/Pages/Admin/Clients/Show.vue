@@ -20,8 +20,8 @@
                         </div>
                         <div class="px-6 mt-2 flex flex-1 items-end">
                             <a class="inline-block px-6 py-2 border-2 border-medium-blue bg-medium-blue border-blue-600 text-white leading-tight font-bold rounded-full hover:bg-blue-500 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-                               :href="'/admin/clients/'+client.id+'/edit'">
-                                Edit
+                               >
+                                {{$page.props.language["Just a button"]}}
                             </a>
                         </div>
                     </div>
