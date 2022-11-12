@@ -22,11 +22,18 @@
                                     form.errors.name
                                 }}</span>
                         </div>
-
+                        <div class="col-span-3">
+                            <div class="block">
+                                <div  class="border-b border-gray-200">
+                                    <nav class="-mb-px flex" aria-label="Tabs">
+                                        <button type="button" v-for="tab in tabs" :key="tab.name" @click="tabChangeLanguage(tab.code)" :class="[tab.current ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300', hasErrors(tab.code) ? 'border-red-700 text-red-700' : '', 'w-1/3 py-4 px-1 text-center border-b-2 font-medium text-sm']" :aria-current="tab.current ? 'page' : undefined">{{ tab.name }}</button>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-span-1" v-for="(itemList,indexList) in form.itemsList" :key="indexList">
-                            <h2 class="mt-4 font-bold">Item {{ indexList + 1 }}</h2>
                             <div v-for="(language,languageIndex) in languages" :key="languageIndex">
-                                <h2 class="mt-4 font-bold">{{ language['name'] }}</h2>
+                                <div :class="language.code === currentLangTab ? '': 'hidden'">
                                 <label
                                     class="form-label inline-block mt-2 text-gray-700">
                                     Title
@@ -70,6 +77,7 @@
                                     class="mt-2 block text-red-800">{{
                                         form.errors["itemsList." + indexList + ".type_id."]
                                     }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -116,7 +124,24 @@ export default {
                 name: this.client.name,
                 itemsList: this.items.length === 0 ? itemListData : this.items,
             }),
-
+        tabs: [
+            {id: 1, name: 'English', code: 'en', current: true , error: true },
+            {id: 2, name: 'Dutch', code: 'nl', current: false ,error: false},
+            {id: 3, name: 'French', code: 'fr', current: false ,error: false},
+        ],
+            currentLangTab : 'en'
+        }
+    },
+    methods:{
+        tabChangeLanguage(code){
+            this.currentLangTab = code;
+            this.tabs.forEach(tab => {
+               tab.current = tab.code === code
+            })
+        },
+        hasErrors(code){
+            let errors = JSON.stringify(this.form.errors);
+           return errors.includes(code);
         }
     }
 }
