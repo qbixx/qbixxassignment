@@ -9,6 +9,7 @@
         "@tailwindcss/line-clamp": "^0.4.2",
         "tw-elements": "^1.0.0-alpha11",
         "vue": "^3.2.31",
+        "vue-select": "^4.0.0-beta.6",
         "vue-sweetalert2": "^5.0.5"
     },
     "devDependencies": {

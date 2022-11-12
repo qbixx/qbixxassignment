@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'vue-select/dist/vue-select.css';
 
 .bg-dark {
     background: rgb(43,51,58);
