@@ -10,6 +10,7 @@ use Interfaces\Admin\Clients\Controllers\IndexClients;
 use Interfaces\Admin\Clients\Controllers\ShowClient;
 use Interfaces\Admin\Clients\Controllers\StoreClient;
 use Interfaces\Admin\Clients\Controllers\UpdateClient;
+use Interfaces\API\Languages\Controllers\SetLanguage;
 use Interfaces\Front\Landing\WelcomeController;
 
 /*
@@ -22,6 +23,9 @@ use Interfaces\Front\Landing\WelcomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('languages/{languageCode}', SetLanguage::class)
+    ->name(RoutesEnum::LANGUAGE_SET);
 
 Route::prefix('admin/clients')->group(function () {
     Route::get('', IndexClients::class)->name(RoutesEnum::ADMIN_INDEX_CLIENTS);

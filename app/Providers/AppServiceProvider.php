@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Helpers\Helpers;
+use Domain\Languages\Models\Language;
 use Eloquent;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\ServiceProvider;
+use Inertia\Inertia;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +19,14 @@ class AppServiceProvider extends ServiceProvider
             return 'Database\\Factories\\'.class_basename($modelName).'Factory';
         });
 
+        Inertia::share([
+            'locale' => function () {
+                return app()->getLocale();
+            },
+            'languages'=>function(){
+                return Language::all();
+            }
+        ]);
         Eloquent::unguard();
     }
 }

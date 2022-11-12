@@ -44,5 +44,10 @@ class RoutesEnum
     /**
      * @string
      */
+    public const LANGUAGE_SET = 'language.set';
+
+    /**
+     * @string
+     */
     public const FRONT_WELCOME = 'front.welcome';
 }
