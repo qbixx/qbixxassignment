@@ -149,7 +149,7 @@ export default {
         },
         typeSelectOptions() {
            return  this.types.map(type => {
-                return {'id': type.id, "label": type.name.en}
+                return {'id': type.id, "label": type.name[this.$page.props.locale]}
             })
         }
     }
