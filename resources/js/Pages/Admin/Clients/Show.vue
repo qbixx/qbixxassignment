@@ -4,11 +4,10 @@
         <template v-slot:header>
            <span>{{client.name}}</span>
         </template>
-
         <div class="flex bg-medium-grey px-4 pt-10 pb-20 sm:px-6 lg:px-8 lg:pt-10 lg:pb-28">
             <div class="relative mx-auto max-w-7xl">
                 <div class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
-                    <div v-for="(item,index) in items"
+                    <div v-for="(item,index) in itemsData"
                          class="flex flex-col min-h-[70vh] overflow-hidden rounded-lg shadow-lg bg-white py-6">
                         <div :class="`bg-${typeColors[index]}-300 text-${typeColors[index]}-900`" class="py-2 my-6 font-bold uppercase text-center">
                             {{ item.type.name[this.$page.props.locale] }}
@@ -36,6 +35,7 @@
 <script>
 import AdminLayout from '@/js/Layouts/AdminLayout.vue'
 import {Inertia} from '@inertiajs/inertia'
+import {itemListData} from "@/js/Utils/mockData";
 
 export default {
     components: {
@@ -50,7 +50,8 @@ export default {
     },
     data() {
        return {
-           typeColors : ['blue','orange','pink']
+           typeColors : ['blue','orange','pink'],
+           itemsData : this.items.length === 0 ? itemListData : this.items,
        }
     },
     methods: {}

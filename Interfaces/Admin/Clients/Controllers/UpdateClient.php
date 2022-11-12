@@ -19,11 +19,11 @@ class UpdateClient extends Controller
     public function __invoke(UpdateClientRequest $request, Client $client)
     {
         foreach ($request->itemsList as $key => $item) {
+            $itemData = collect($item)->only(['id', 'title', 'paragraph', 'type_id'])->toArray();
             if (isset($client->items[$key])) {
-                $itemData = collect($item)->only(['id', 'title', 'paragraph', 'type_id'])->toArray();
                 $client->items[$key]->update($itemData);
             } else {
-                $client->items()->create($item);
+                $client->items()->create($itemData);
             }
         }
 
