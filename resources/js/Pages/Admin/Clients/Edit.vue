@@ -84,7 +84,7 @@
                         </div>
                     </div>
 
-                    <div class="w-full flex items-end justify-end space-x-8">
+                    <div class="w-full flex items-end justify-end space-x-8 mt-5">
                         <a
                             href="/admin/clients"
                             title="Return to index"
