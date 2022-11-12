@@ -24,7 +24,7 @@ use Interfaces\Front\Landing\WelcomeController;
 |
 */
 
-Route::get('languages/{languageCode}', SetLanguage::class)
+Route::get('api/languages/{languageCode}', SetLanguage::class)
     ->name(RoutesEnum::LANGUAGE_SET);
 
 Route::prefix('admin/clients')->group(function () {

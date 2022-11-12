@@ -14,10 +14,10 @@
                     </ul>
                     <Popover class="relative" v-slot="{ open }">
                         <PopoverButton
-                            :class="[open ? 'text-gray-900' : 'text-gray-500', 'group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2']">
+                            class='flex px-6 py-2 border-2 border-medium-blue bg-medium-blue border-blue-600 text-white leading-tight font-bold rounded-full hover:bg-blue-500 focus:outline-none focus:ring-0 transition duration-150 ease-in-out'>
                             <span>{{ this.currentLocale() }}</span>
                             <ChevronDownIcon
-                                :class="[open ? 'text-gray-600' : 'text-gray-400', 'ml-2 h-5 w-5 group-hover:text-gray-500']"
+                                class='ml-2 h-5 text-white w-5 group-hover:text-gray-500'
                                 aria-hidden="true"/>
                         </PopoverButton>
 
@@ -75,7 +75,7 @@ export default {
             return this.$page.props.languages.filter(lang => lang.code === this.$page.props.locale)[0].name
         },
         async changeLanguage(lang) {
-            await axios.get('/languages/' + lang.code);
+            await axios.get('/api/languages/' + lang.code);
             Inertia.reload({ only: ['client','locale'] })
         }
     }

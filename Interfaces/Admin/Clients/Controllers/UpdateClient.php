@@ -9,6 +9,7 @@ use App\Enums\RoutesEnum;
 use App\Http\Controllers\Controller;
 use Domain\Clients\Models\Client;
 use Domain\Items\Models\Item;
+use Illuminate\Support\Arr;
 use Inertia\Inertia;
 use Inertia\Response;
 use Interfaces\Admin\Clients\Requests\UpdateClientRequest;
@@ -17,11 +18,11 @@ class UpdateClient extends Controller
 {
     public function __invoke(UpdateClientRequest $request, Client $client)
     {
-        $client->update($request->safe(['name']));
-        foreach ($request->itemsList as $key => $item){
-            if(isset($client->items[$key])){
-                $client->items[$key]->update($item);
-            }else{
+        foreach ($request->itemsList as $key => $item) {
+            if (isset($client->items[$key])) {
+                $itemData = collect($item)->only(['id', 'title', 'paragraph', 'type_id'])->toArray();
+                $client->items[$key]->update($itemData);
+            } else {
                 $client->items()->create($item);
             }
         }
