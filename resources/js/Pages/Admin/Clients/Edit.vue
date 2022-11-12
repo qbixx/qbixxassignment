@@ -1,5 +1,8 @@
 <template>
     <AdminLayout>
+        <template v-slot:header>
+            <span>{{client.name}}</span>
+        </template>
         <Head title="Update Client"/>
         <div class="py-8 flex justify-center">
             <div class="block p-6 rounded-lg shadow-lg bg-white w-10/12">
