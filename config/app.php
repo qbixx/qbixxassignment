@@ -111,6 +111,9 @@ return [
 
     'faker_locale' => 'en_US',
 
+
+    'supported_lang'=>['en','nl','fr'],
+
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
@@ -121,6 +124,7 @@ return [
     | will not be safe. Please do this before deploying an application!
     |
     */
+
 
     'key' => env('APP_KEY'),
 

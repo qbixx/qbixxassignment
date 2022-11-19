@@ -7,18 +7,19 @@ namespace Interfaces\Admin\Clients\Controllers;
 use App\Enums\Inertia\ClientView;
 use App\Http\Controllers\Controller;
 use Domain\Clients\Models\Client;
+use Domain\Languages\Models\Language;
+use Domain\Types\Models\Type;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class IndexClients extends Controller
+class ShowClient extends Controller
 {
-    public function __invoke(): Response
+    public function __invoke(Client $client): Response
     {
-        $clients = Client::all();
-
+        $items = $client->items;
         return Inertia::render(
-            ClientView::ADMIN_INDEX,
-            compact('clients'),
+            ClientView::ADMIN_SHOW,
+            compact(['client','items']),
         );
     }
 }
