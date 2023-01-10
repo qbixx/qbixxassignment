@@ -7,12 +7,12 @@ namespace Domain\Clients\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+class Item extends Model
 {
     use HasFactory;
 
-    public function items()
+    public function client()
     {
-        return $this->hasMany(Item::class);
+        return $this->belongsTo(Client::class);
     }
 }
