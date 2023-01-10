@@ -13,7 +13,8 @@ class UpdateClient extends Controller
 {
     public function __invoke(Client $client, StoreClientRequest $request)
     {
-        $client->name = $request->name;
+        $safeData = $request->safe();
+        $client->name = $safeData['name'];
         $client->save();
 
         return redirect()->route(RoutesEnum::ADMIN_INDEX_CLIENTS);
