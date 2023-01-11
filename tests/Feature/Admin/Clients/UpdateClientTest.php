@@ -31,7 +31,7 @@ class UpdateClientTest extends FeatureTest
             route(
                 RoutesEnum::ADMIN_UPDATE_CLIENT,
                 [
-                    'client' => $this->client->id
+                    'id' => $this->client->id
                 ]
             ),
             $formData
@@ -57,7 +57,7 @@ class UpdateClientTest extends FeatureTest
             route(
                 RoutesEnum::ADMIN_UPDATE_CLIENT,
                 [
-                    'client' => $this->client->id
+                    'id' => $this->client->id
                 ]
             ),
             $formData
