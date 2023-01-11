@@ -11,8 +11,10 @@ use Interfaces\Admin\Clients\Requests\StoreClientRequest;
 
 class UpdateClient extends Controller
 {
-    public function __invoke(Client $client, StoreClientRequest $request)
+    public function __invoke($id, StoreClientRequest $request)
     {
+        $client = Client::findOrFail($id);
+
         $safeData = $request->safe();
         $client->name = $safeData['name'];
         $client->save();

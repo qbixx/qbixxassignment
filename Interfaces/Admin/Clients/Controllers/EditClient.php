@@ -9,8 +9,10 @@ use Domain\Clients\Models\Client;
 
 class EditClient extends Controller
 {
-    public function __invoke(Client $client)
+    public function __invoke($id)
     {
+        $client = Client::with('items')->find($id);
+
         return view(
             'admin.clients.edit',
             compact('client')
