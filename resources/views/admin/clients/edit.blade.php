@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="w-full py-8 flex justify-center">
-    <div class="block p-6 rounded-lg shadow-lg bg-white w-1/3">
+    <div class="block p-6 rounded-lg shadow-lg bg-white w-2/3">
         <h1>Update client</h1>
         <form method="POST" action="{{ route('admin.clients.update', ['id' => $client->id]) }}">
             @csrf
