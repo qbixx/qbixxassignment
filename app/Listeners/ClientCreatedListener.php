@@ -29,16 +29,13 @@ class ClientCreatedListener
         $result = [];
 
         array_walk($itemsData, function ($itemData) use (&$result) {
-            array_walk($itemData, function ($item, $itemLanguage) use (&$result) {
-                $result[] = new Item(
-                    [
-                        'language' => $itemLanguage,
-                        'title' => $item['title'],
-                        'paragraph' => $item['paragraph'],
-                        'type' => $item['type'],
-                    ]
-                );
+            $temp = [];
+
+            array_walk($itemData, function ($itemAttributes, $attribute) use (&$temp) {
+                $temp[$attribute] = $itemAttributes;
             });
+
+            $result[] = new Item($temp);
         });
 
         return $result;
