@@ -12,6 +12,9 @@ class StoreClientRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:4', 'max:30'],
+            'title' => ['required', 'array'],
+            'paragraph' => ['required', 'array'],
+            'type' => ['required', 'array'],
         ];
     }
 }
