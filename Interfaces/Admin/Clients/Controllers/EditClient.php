@@ -11,7 +11,7 @@ class EditClient extends Controller
 {
     public function __invoke($id)
     {
-        $client = Client::with('items')->find($id);
+        $client = Client::with('items')->findOrFail($id);
 
         return view(
             'admin.clients.edit',
