@@ -10,12 +10,14 @@ use Storage;
 
 class ClientCreatedListener
 {
-    private const DEFAULT_ITEMS_FILE_NAME = 'default-items.json';
-
     public function handle(ClientCreated $event): void
     {
         $itemJson = json_decode(
-            Storage::disk('local')->get(self::DEFAULT_ITEMS_FILE_NAME),
+            Storage::disk(
+                config('qbixx.default_items.storage')
+            )->get(
+                config('qbixx.default_items.path')
+            ),
             true
         );
 
