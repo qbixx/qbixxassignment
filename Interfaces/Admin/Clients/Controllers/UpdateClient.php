@@ -13,10 +13,17 @@ class UpdateClient extends Controller
 {
     public function __invoke($id, UpdateClientRequest $request)
     {
-        $client = Client::findOrFail($id);
+        $client = Client::with('items')->findOrFail($id);
 
         $safeData = $request->safe();
         $client->name = $safeData['name'];
+
+        foreach ($safeData['items'] as $itemId => $itemData) {
+            $client->items()
+                ->find($itemId)
+                ->update($itemData);
+        }
+
         $client->save();
 
         return redirect()->route(RoutesEnum::ADMIN_INDEX_CLIENTS);
