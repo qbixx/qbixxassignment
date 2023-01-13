@@ -21,7 +21,7 @@ class UpdateClientTest extends FeatureTest
     /**
      * @test
      */
-    public function a guest can update clients_name(): void
+    public function a guest can update clientsName(): void
     {
         $formData = [
             'name' => 'New name',
@@ -31,7 +31,7 @@ class UpdateClientTest extends FeatureTest
             route(
                 RoutesEnum::ADMIN_UPDATE_CLIENT,
                 [
-                    'id' => $this->client->id
+                    'id' => $this->client->id,
                 ]
             ),
             $formData
@@ -44,10 +44,10 @@ class UpdateClientTest extends FeatureTest
 
     /**
      * @test
-     * 
+     *
      * @dataProvider invalidData
      */
-    public function a guest can not_update clients_name_with_invalid_data(string $columnName, string $value): void
+    public function a guest can notUpdate clientsNameWithInvalidData(string $columnName, string $value): void
     {
         $formData = [
             $columnName => $value,
@@ -57,7 +57,7 @@ class UpdateClientTest extends FeatureTest
             route(
                 RoutesEnum::ADMIN_UPDATE_CLIENT,
                 [
-                    'id' => $this->client->id
+                    'id' => $this->client->id,
                 ]
             ),
             $formData

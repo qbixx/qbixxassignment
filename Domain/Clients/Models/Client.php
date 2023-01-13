@@ -11,7 +11,8 @@ use Illuminate\Notifications\Notifiable;
 
 class Client extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     protected $dispatchesEvents = [
         'created' => ClientCreated::class,
