@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
@@ -15,8 +17,7 @@ class ClientItem implements Rule
         $items->pluck('title')
             ->flatten()
             ->each(
-                function (string $title)
-                {
+                function (string $title): void {
                     $length = strlen($title);
 
                     if ($length < 4 || $length > 30) {
@@ -28,8 +29,7 @@ class ClientItem implements Rule
         $items->pluck('paragraph')
             ->flatten()
             ->each(
-                function (string $paragraph)
-                {
+                function (string $paragraph): void {
                     $length = strlen($paragraph);
 
                     if ($length < 10 || $length > 200) {
