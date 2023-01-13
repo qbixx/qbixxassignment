@@ -48,46 +48,21 @@
             @endif
             <h1>Items</h1>
             @foreach ($client->items as $item)
-                <h2>{{ $item->language }}</h2>
-                <div class="form-group mb-6">
-                    <label for="title" class="form-label inline-block mb-2 text-gray-700">
-                        Title
-                    </label>
-                    <input
-                        id="title"
-                        name="title[{{ $item->language }}][]"
-                        type="text"
-                        placeholder="Enter title {{ $item->language }}"
-                        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        value="{{ $item->title }}"
-                    >
-                </div>
-                <div class="form-group mb-6">
-                    <label for="paragraph" class="form-label inline-block mb-2 text-gray-700">
-                        Paragraph
-                    </label>
-                    <textarea
-                        id="paragraph"
-                        name="paragraph[{{ $item->language }}][]"
-                        placeholder="Enter paragraph {{ $item->language }}"
-                        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    >
-                        {{ $item->paragraph }}
-                    </textarea>
-                </div>
-                <div class="form-group mb-6">
-                    <label for="type" class="form-label inline-block mb-2 text-gray-700">
-                        Type
-                    </label>
-                    <input
-                        id="type"
-                        name="type[{{ $item->language }}][]"
-                        type="text"
-                        placeholder="Enter type {{ $item->language }}"
-                        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                        value="{{ $item->type }}"
-                    >
-                </div>
+                @foreach ($item->translations as $attribute => $translations)
+                    <h2>{{ $attribute }}</h2>
+                    @foreach ($translations as $language => $translation)
+                        <h3>{{ $language }}</h3>
+                        <div class="form-group mb-6">
+                            <input
+                                name="{{ $attribute }}[{{ $language }}][]"
+                                type="text"
+                                placeholder="Enter {{ $attribute }} in {{ $language }}"
+                                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                value="{{ $translation }}"
+                            >
+                        </div>
+                    @endforeach
+                @endforeach
                 <hr>
             @endforeach
         </form>
