@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Listeners;
 
 use App\Events\ClientCreated;
+use Domain\Clients\Models\Client;
 use Domain\Clients\Models\Item;
 use Storage;
 
@@ -12,6 +13,8 @@ class ClientCreatedListener
 {
     public function handle(ClientCreated $event): void
     {
+        $client = Client::with('items')->findOrFail($event->id);
+
         $itemJson = json_decode(
             Storage::disk(
                 config('qbixx.default_items.storage')
@@ -21,7 +24,7 @@ class ClientCreatedListener
             true
         );
 
-        $event->client->items()->saveMany(
+        $client->items()->saveMany(
             $this->mapItemData($itemJson['items'])
         );
     }
