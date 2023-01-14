@@ -40,4 +40,9 @@ class RoutesEnum
      * @string
      */
     public const FRONT_WELCOME = 'front.welcome';
+
+    /**
+     * @string
+     */
+    public const FRONT_SHOW_CLIENT = 'front.clients.show';
 }

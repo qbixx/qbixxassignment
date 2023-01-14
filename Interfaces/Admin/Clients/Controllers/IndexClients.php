@@ -16,11 +16,12 @@ class IndexClients extends Controller
     public function __invoke(): Response
     {
         $clients = Client::all()
-            ->map(function ($user) {
-                $user->editUrl = URL::route(RoutesEnum::ADMIN_EDIT_CLIENT, $user);
-                $user->deleteUrl = URL::route(RoutesEnum::ADMIN_DELETE_CLIENT, $user);
+            ->map(function ($client) {
+                $client->editUrl = URL::route(RoutesEnum::ADMIN_EDIT_CLIENT, $client);
+                $client->deleteUrl = URL::route(RoutesEnum::ADMIN_DELETE_CLIENT, $client);
+                $client->showUrl = URL::route(RoutesEnum::FRONT_SHOW_CLIENT, ['en', $client]);
 
-                return $user;
+                return $client;
             });
 
         return Inertia::render(
