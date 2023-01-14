@@ -26,7 +26,7 @@ class UpdateClientTest extends FeatureTest
         $itemData = collect($this->client->items)
             ->map(function ($item) {
                 return [
-                    $item->id => collect($item)->only(['title', 'paragraph', 'type'])->toArray()
+                    $item->id => collect($item)->only(['title', 'paragraph', 'type'])->toArray(),
                 ];
             })->toArray();
 
