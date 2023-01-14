@@ -47,20 +47,29 @@
                 </div>
             @endif
             @foreach ($client->items as $item)
-                @foreach ($item->translations as $attribute => $translations)
-                    <h2>{{ $attribute }}</h2>
-                    @foreach ($translations as $language => $translation)
-                        <h3>{{ $language }}</h3>
-                        <div class="form-group mb-6">
-                            <input
-                                name="items[{{ $item->id }}][{{ $attribute }}][{{ $language }}]"
-                                type="text"
-                                placeholder="Enter {{ $attribute }} in {{ $language }}"
-                                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                value="{{ $translation }}"
-                            >
-                        </div>
-                    @endforeach
+                @foreach ($item->translations['title'] as $language => $translation)
+                    <h3>{{ $language }}</h3>
+                    <div class="form-group mb-6">
+                        <input
+                            name="items[{{ $item->id }}][{{ 'title' }}][{{ $language }}]"
+                            type="text"
+                            placeholder="Enter title in {{ $language }}"
+                            class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            value="{{ $translation }}"
+                        >
+                    </div>
+                @endforeach
+                @foreach ($item->translations['paragraph'] as $language => $translation)
+                    <h3>{{ $language }}</h3>
+                    <div class="form-group mb-6">
+                        <input
+                            name="items[{{ $item->id }}][{{ 'paragraph' }}][{{ $language }}]"
+                            type="text"
+                            placeholder="Enter paragraph in {{ $language }}"
+                            class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                            value="{{ $translation }}"
+                        >
+                    </div>
                 @endforeach
                 <h2>Type</h2>
                 <select name="items[{{ $item->id }}][type]" id="item-type">
