@@ -11,7 +11,7 @@ use Illuminate\Http\RedirectResponse;
 
 class DeleteClient extends Controller
 {
-    public function __invoke($id): RedirectResponse
+    public function __invoke(int $id): RedirectResponse
     {
         $client = Client::findOrFail($id);
         $client->delete();

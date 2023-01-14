@@ -10,7 +10,7 @@ use Domain\Clients\Models\Client;
 
 class EditClient extends Controller
 {
-    public function __invoke($id)
+    public function __invoke(int $id)
     {
         $client = Client::with('items')->findOrFail($id);
         $itemTypes = ItemType::cases();

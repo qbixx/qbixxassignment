@@ -6,6 +6,7 @@ namespace Domain\Clients\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\Translatable\HasTranslations;
 
 class Item extends Model
@@ -15,7 +16,7 @@ class Item extends Model
 
     public $translatable = ['title', 'paragraph'];
 
-    public function client()
+    public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);
     }

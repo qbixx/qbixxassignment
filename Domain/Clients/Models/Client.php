@@ -7,6 +7,7 @@ namespace Domain\Clients\Models;
 use App\Events\ClientCreated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Client extends Model
 {
@@ -16,7 +17,7 @@ class Client extends Model
         'created' => ClientCreated::class,
     ];
 
-    public function items()
+    public function items(): HasMany
     {
         return $this->hasMany(Item::class);
     }

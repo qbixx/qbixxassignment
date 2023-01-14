@@ -11,7 +11,7 @@ use Interfaces\Admin\Clients\Requests\UpdateClientRequest;
 
 class UpdateClient extends Controller
 {
-    public function __invoke($id, UpdateClientRequest $request)
+    public function __invoke(int $id, UpdateClientRequest $request)
     {
         $client = Client::with('items')->findOrFail($id);
 
