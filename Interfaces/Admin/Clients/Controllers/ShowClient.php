@@ -12,17 +12,22 @@ class ShowClient extends Controller
 {
     public function __invoke($language, $id)
     {
-        $client = Client::with('items')->findOrFail($id);
-
         if (! AppLanguage::tryFrom($language)) {
             return abort(404);
         }
 
         app()->setLocale($language);
 
+        $client = Client::with('items')->findOrFail($id);
+
+        $languages = collect(AppLanguage::cases())
+            ->map(function (AppLanguage $appLanguage) {
+                return $appLanguage->name;
+            });
+
         return view(
             'pages.front.clients.show',
-            compact('client')
+            compact('client', 'languages') + ['selectedLanguage' => $language]
         );
     }
 }
