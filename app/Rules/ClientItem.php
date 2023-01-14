@@ -19,7 +19,7 @@ class ClientItem implements Rule
             ->flatten()
             ->each(
                 function (string $title): void {
-                    $length = strlen($title);
+                    $length = mb_strlen($title);
 
                     if ($length < 4 || $length > 30) {
                         $this->message = 'All titles have to be between 4 and 30 characters long';
@@ -31,7 +31,7 @@ class ClientItem implements Rule
             ->flatten()
             ->each(
                 function (string $paragraph): void {
-                    $length = strlen($paragraph);
+                    $length = mb_strlen($paragraph);
 
                     if ($length < 10 || $length > 200) {
                         $this->message = 'All paragraphs have to be between 10 and 200 characters long';
