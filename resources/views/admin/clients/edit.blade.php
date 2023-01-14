@@ -46,7 +46,6 @@
                     </ul>
                 </div>
             @endif
-            <h1>Items</h1>
             @foreach ($client->items as $item)
                 @foreach ($item->translations as $attribute => $translations)
                     <h2>{{ $attribute }}</h2>
@@ -63,6 +62,12 @@
                         </div>
                     @endforeach
                 @endforeach
+                <h2>Type</h2>
+                <select name="items[{{ $item->id }}][type]" id="item-type">
+                    @foreach ($itemTypes as $itemType)
+                        <option value="{{ $itemType->name }}" {{ $item->type === $itemType->name ? "selected" : "" }}>{{ $itemType->name }}</option>
+                    @endforeach
+                </select>
                 <hr>
             @endforeach
         </form>

@@ -13,7 +13,7 @@ class Item extends Model
     use HasFactory;
     use HasTranslations;
 
-    public $translatable = ['title', 'paragraph', 'type'];
+    public $translatable = ['title', 'paragraph'];
 
     public function client()
     {
