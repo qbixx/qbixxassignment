@@ -21,10 +21,26 @@ class UpdateClientTest extends FeatureTest
     /**
      * @test
      */
-    public function a guest can update clientsName(): void
+    public function a guest can update client(): void
     {
+        $itemData = collect($this->client->items)
+            ->map(function ($item) {
+                return [
+                    $item->id => collect($item)->only(['title', 'paragraph', 'type'])->toArray()
+                ];
+            })->toArray();
+
+        $result = [];
+
+        foreach ($itemData as $formItem) {
+            foreach ($formItem as $id => $data) {
+                $result[$id] = $data;
+            }
+        }
+
         $formData = [
             'name' => 'New name',
+            'items' => $result,
         ];
 
         $this->patch(
@@ -47,7 +63,7 @@ class UpdateClientTest extends FeatureTest
      *
      * @dataProvider invalidData
      */
-    public function a guest can notUpdate clientsNameWithInvalidData(string $columnName, string $value): void
+    public function a guest can not update clients name with invalid data(string $columnName, string $value): void
     {
         $formData = [
             $columnName => $value,
