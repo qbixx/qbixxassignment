@@ -17,11 +17,8 @@ class ShowClientTest extends FeatureTest
     public function a guest can view clients(): void
     {
         $client = Client::factory()->create();
-        $appLanguages = AppLanguage::cases();
-
-        foreach ($appLanguages as $appLanguage) {
-            $this->get(route(RoutesEnum::FRONT_SHOW_CLIENT, [$appLanguage->name, $client->id]))
-                ->assertOk();
-        }
+        
+        $this->get(route(RoutesEnum::FRONT_SHOW_CLIENT, [$client->id]))
+            ->assertOk();
     }
 }
