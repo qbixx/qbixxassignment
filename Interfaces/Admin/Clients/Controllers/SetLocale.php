@@ -13,9 +13,7 @@ class SetLocale extends Controller
     {
         $safeData = $request->safe();
 
-        if ($safeData['language']) {
-            session(['locale' => $safeData['language']]);
-        }
+        session(['locale' => $safeData['language']]);
 
         return back();
     }
