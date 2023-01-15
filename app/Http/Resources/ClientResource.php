@@ -5,10 +5,21 @@ declare(strict_types=1);
 namespace App\Http\Resources;
 
 use App\Enums\RoutesEnum;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Collection;
 
 class ClientResource extends JsonResource
 {
+    public static function collectResources(Collection $clients): array
+    {
+        return $clients->map(
+            function ($client) {
+                return (new self($client))->toArray(new Request);
+            }
+        )->toArray();
+    }
+
     /**
      * Transform the resource into an array.
      *

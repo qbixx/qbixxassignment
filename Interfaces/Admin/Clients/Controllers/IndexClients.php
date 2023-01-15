@@ -15,10 +15,7 @@ class IndexClients extends Controller
 {
     public function __invoke(Request $request): Response
     {
-        $clients = Client::all()
-            ->map(function ($client) use ($request) {
-                return (new ClientResource($client))->toArray($request);
-            })->toArray();
+        $clients = ClientResource::collectResources(Client::all());
 
         return Inertia::render(
             'Admin/Clients/Index',
