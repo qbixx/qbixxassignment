@@ -13,11 +13,7 @@ class ShowClient extends Controller
     public function __invoke(int $id)
     {
         $client = Client::with('items')->findOrFail($id);
-
-        $languages = collect(AppLanguage::cases())
-            ->map(function (AppLanguage $appLanguage) {
-                return $appLanguage->name;
-            });
+        $languages = AppLanguage::cases();
 
         return view(
             'pages.front.clients.show',

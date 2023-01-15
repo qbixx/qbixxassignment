@@ -8,10 +8,10 @@
         <select name="language">
             @foreach ($languages as $language)
                 <option
-                    {{ session('locale') === $language ? "selected" : '' }}
-                    value="{{ $language }}"
+                    {{ session('locale') === $language->value ? "selected" : '' }}
+                    value="{{ $language->value }}"
                 >
-                    {{ $language }}
+                    {{ $language->name }}
                 </option>
             @endforeach
         </select>
