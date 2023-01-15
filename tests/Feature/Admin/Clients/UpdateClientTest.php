@@ -12,10 +12,13 @@ class UpdateClientTest extends FeatureTest
 {
     private Client $client;
 
+    private array $validItemData = [];
+
     public function setUp(): void
     {
         parent::setUp();
         $this->client = Client::factory()->create();
+        $this->validItemData = $this->generateValidData();
     }
 
     /**
@@ -23,24 +26,9 @@ class UpdateClientTest extends FeatureTest
      */
     public function a guest can update client(): void
     {
-        $itemData = collect($this->client->items)
-            ->map(function ($item) {
-                return [
-                    $item->id => collect($item)->only(['title', 'paragraph', 'type'])->toArray(),
-                ];
-            })->toArray();
-
-        $result = [];
-
-        foreach ($itemData as $formItem) {
-            foreach ($formItem as $id => $data) {
-                $result[$id] = $data;
-            }
-        }
-
         $formData = [
             'name' => 'New name',
-            'items' => $result,
+            'items' => $this->validItemData,
         ];
 
         $this->patch(
@@ -63,10 +51,11 @@ class UpdateClientTest extends FeatureTest
      *
      * @dataProvider invalidData
      */
-    public function a guest can not update clients name with invalid data(string $columnName, string $value): void
+    public function a guest can not update clients name with invalid data(string $columnName, string $value, array $itemsData): void
     {
         $formData = [
             $columnName => $value,
+            'items' => $itemsData,
         ];
 
         $this->patch(
@@ -83,9 +72,32 @@ class UpdateClientTest extends FeatureTest
     public function invalidData(): array
     {
         return [
-            'required' => ['name', ''],
-            'min 4' => ['name', 'fre'],
-            'max 30' => ['name', 'Do you know someone with a name longer than 30 characters?'],
+            'name required' => ['name', '', $this->validItemData],
+            'name min 4' => ['name', 'fre', $this->validItemData],
+            'name max 30' => ['name', 'Do you know someone with a name longer than 30 characters?', $this->validItemData],
         ];
+    }
+
+    private function generateValidData()
+    {
+        $data = [];
+
+        foreach ($this->client->items as $item) {
+            $data[$item->id] = [
+                'title' => [
+                    'en' => 'title en',
+                    'fr' => 'title fr',
+                    'nl' => 'title nl',
+                ],
+                'paragraph' => [
+                    'en' => 'paragraph en',
+                    'fr' => 'paragraph fr',
+                    'nl' => 'paragraph nl',
+                ],
+                'type' => 'Wisdom',
+            ];
+        }
+
+        return $data;
     }
 }
