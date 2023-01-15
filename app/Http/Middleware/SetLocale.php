@@ -11,7 +11,7 @@ class SetLocale
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!session('locale')) {
+        if (! session('locale')) {
             session(['locale' => 'en']);
         }
 
