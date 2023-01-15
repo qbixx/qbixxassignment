@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Interfaces\Admin\Clients\Requests;
 
-use App\Rules\ClientItem;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateClientRequest extends FormRequest
@@ -13,7 +12,11 @@ class UpdateClientRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:4', 'max:30'],
-            'items' => ['required', 'array', new ClientItem],
+            'items' => ['required', 'array', 'size:3'],
+            'items.*' => ['required', 'array', 'size:3', 'required_array_keys:title,paragraph,type'],
+            'items.*.title.*' => ['required', 'string', 'min:4', 'max:30'],
+            'items.*.paragraph.*' => ['required', 'string', 'min:10', 'max:200'],
+            'items.*.type' => ['required', 'string', 'in:Wisdom,Philosophy,Design'],
         ];
     }
 }
