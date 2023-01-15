@@ -45,4 +45,9 @@ class RoutesEnum
      * @string
      */
     public const FRONT_SHOW_CLIENT = 'front.clients.show';
+
+    /**
+     * @string
+     */
+    public const FRONT_SET_LOCALE = 'front.set-locale';
 }

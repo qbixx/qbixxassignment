@@ -23,7 +23,7 @@ class ClientResource extends JsonResource
             'name' => $this->name,
             'editUrl' => route(RoutesEnum::ADMIN_EDIT_CLIENT, $this),
             'deleteUrl' => route(RoutesEnum::ADMIN_DELETE_CLIENT, $this),
-            'showUrl' => route(RoutesEnum::FRONT_SHOW_CLIENT, ['en', $this]),
+            'showUrl' => route(RoutesEnum::FRONT_SHOW_CLIENT, [$this]),
         ];
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Interfaces\Admin\Clients\Controllers\DeleteClient;
 use Interfaces\Admin\Clients\Controllers\EditClient;
 use Interfaces\Admin\Clients\Controllers\IndexClients;
+use Interfaces\Admin\Clients\Controllers\SetLocale;
 use Interfaces\Admin\Clients\Controllers\ShowClient;
 use Interfaces\Admin\Clients\Controllers\StoreClient;
 use Interfaces\Admin\Clients\Controllers\UpdateClient;
@@ -30,4 +31,5 @@ Route::post('admin/clients/create', StoreClient::class)->name(RoutesEnum::ADMIN_
 Route::get('admin/clients/{id}/edit', EditClient::class)->name(RoutesEnum::ADMIN_EDIT_CLIENT);
 Route::patch('admin/clients/{id}', UpdateClient::class)->name(RoutesEnum::ADMIN_UPDATE_CLIENT);
 Route::get('admin/clients/{id}/delete', DeleteClient::class)->name(RoutesEnum::ADMIN_DELETE_CLIENT);
-Route::get('{language}/clients/{id}', ShowClient::class)->name(RoutesEnum::FRONT_SHOW_CLIENT);
+Route::get('clients/{id}', ShowClient::class)->middleware('locale')->name(RoutesEnum::FRONT_SHOW_CLIENT);
+Route::post('set-locale', SetLocale::class)->name(RoutesEnum::FRONT_SET_LOCALE);

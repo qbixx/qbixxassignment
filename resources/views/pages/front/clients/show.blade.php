@@ -3,17 +3,20 @@
 @section('title', 'Show client')
 
 @section('content')
-    <div>
-        Choose language
-        @foreach ($languages as $language)
-            <a
-                style="{{ $selectedLanguage === $language ? "text-decoration: underline;" : '' }}"
-                href="{{ route('front.clients.show', [$language, $client->id]) }}"
-            >
-                {{ $language }}
-            </a>
-        @endforeach
-    </div>
+    <form action="{{ route('front.set-locale') }}" method="POST">
+        @csrf
+        <select name="language">
+            @foreach ($languages as $language)
+                <option
+                    {{ session('locale') === $language ? "selected" : '' }}
+                    value="{{ $language }}"
+                >
+                    {{ $language }}
+                </option>
+            @endforeach
+        </select>
+        <input type="submit" value="Switch">
+    </form>
     <h2>{{ $client->name }}</h2>
     <hr>
     @foreach ($client->items as $item)

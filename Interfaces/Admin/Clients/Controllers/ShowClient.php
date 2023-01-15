@@ -10,14 +10,8 @@ use Domain\Clients\Models\Client;
 
 class ShowClient extends Controller
 {
-    public function __invoke(string $language, int $id)
+    public function __invoke(int $id)
     {
-        if (! AppLanguage::tryFrom($language)) {
-            return abort(404);
-        }
-
-        app()->setLocale($language);
-
         $client = Client::with('items')->findOrFail($id);
 
         $languages = collect(AppLanguage::cases())
@@ -27,7 +21,7 @@ class ShowClient extends Controller
 
         return view(
             'pages.front.clients.show',
-            compact('client', 'languages') + ['selectedLanguage' => $language]
+            compact('client', 'languages'),
         );
     }
 }
