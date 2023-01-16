@@ -18,6 +18,8 @@ class UpdateClient extends Controller
         $safeData = $request->safe();
         $client->name = $safeData['name'];
 
+        // because authorization is not in the scope of this task
+        // I am assuming that items belong to this client
         foreach ($safeData['items'] as $itemId => $itemData) {
             $client->items()
                 ->find($itemId)
