@@ -16,10 +16,11 @@ class IndexClients extends Controller
     public function __invoke(Request $request): Response
     {
         $clients = ClientResource::collectResources(Client::all());
+        $csrfToken = csrf_token();
 
         return Inertia::render(
             'Admin/Clients/Index',
-            compact('clients'),
+            compact('clients', 'csrfToken'),
         );
     }
 }

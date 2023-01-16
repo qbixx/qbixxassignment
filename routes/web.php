@@ -30,6 +30,6 @@ Route::inertia('admin/clients/create', 'Admin/Clients/Create')->name(RoutesEnum:
 Route::post('admin/clients/create', StoreClient::class)->name(RoutesEnum::ADMIN_STORE_CLIENT);
 Route::get('admin/clients/{id}/edit', EditClient::class)->name(RoutesEnum::ADMIN_EDIT_CLIENT);
 Route::patch('admin/clients/{id}', UpdateClient::class)->name(RoutesEnum::ADMIN_UPDATE_CLIENT);
-Route::get('admin/clients/{id}/delete', DeleteClient::class)->name(RoutesEnum::ADMIN_DELETE_CLIENT);
+Route::delete('admin/clients/{id}', DeleteClient::class)->name(RoutesEnum::ADMIN_DELETE_CLIENT);
 Route::get('clients/{id}', ShowClient::class)->middleware('locale')->name(RoutesEnum::FRONT_SHOW_CLIENT);
 Route::post('set-locale', SetLocale::class)->name(RoutesEnum::FRONT_SET_LOCALE);

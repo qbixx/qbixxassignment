@@ -16,8 +16,10 @@ class DeleteClientTest extends FeatureTest
     public function a guest can delete client(): void
     {
         $client = Client::factory()->create();
+        $items = $client->items;
+        $this->assertCount(3, $items);
 
-        $this->get(
+        $this->delete(
             route(
                 RoutesEnum::ADMIN_DELETE_CLIENT,
                 [
@@ -27,6 +29,9 @@ class DeleteClientTest extends FeatureTest
         )->assertRedirect(route(RoutesEnum::ADMIN_INDEX_CLIENTS));
 
         $this->assertModelMissing($client);
+        foreach ($items as $item) {
+            $this->assertModelMissing($item);
+        }
     }
 
     /**
@@ -34,7 +39,7 @@ class DeleteClientTest extends FeatureTest
      */
     public function a guest can not delete client with invalid data(): void
     {
-        $this->get(
+        $this->delete(
             route(
                 RoutesEnum::ADMIN_DELETE_CLIENT,
                 [
