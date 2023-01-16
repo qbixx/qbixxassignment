@@ -7,6 +7,7 @@ namespace App\Listeners;
 use App\Events\ClientCreated;
 use Domain\Clients\Models\Client;
 use Domain\Clients\Models\Item;
+use Illuminate\Support\Collection;
 use Storage;
 
 class ClientCreatedListener
@@ -29,20 +30,10 @@ class ClientCreatedListener
         );
     }
 
-    private function mapItemData(array $itemsData): array
+    private function mapItemData(array $itemsData): Collection
     {
-        $result = [];
-
-        array_walk($itemsData, function ($itemData) use (&$result): void {
-            $temp = [];
-
-            array_walk($itemData, function ($itemAttributes, $attribute) use (&$temp): void {
-                $temp[$attribute] = $itemAttributes;
-            });
-
-            $result[] = new Item($temp);
+        return collect($itemsData)->map(function (array $item) {
+            return new Item($item);
         });
-
-        return $result;
     }
 }
