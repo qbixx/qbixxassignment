@@ -16,9 +16,9 @@ class UpdateClientRequest extends FormRequest
             'name' => ['required', 'string', 'min:4', 'max:30'],
             'items' => ['required', 'array', 'size:3'],
             'items.*' => ['required', 'array', 'size:3', 'required_array_keys:title,paragraph,type'],
-            'items.*.title.*' => ['required', 'string', 'min:4', 'max:30'],
-            'items.*.paragraph.*' => ['required', 'string', 'min:10', 'max:200'],
-            'items.*.type' => ['required', 'string', new Enum(ItemType::class)],
+            'items.*.title.*' => ['string', 'min:4', 'max:30'],
+            'items.*.paragraph.*' => ['string', 'min:10', 'max:200'],
+            'items.*.type' => ['string', new Enum(ItemType::class)],
         ];
     }
 }
