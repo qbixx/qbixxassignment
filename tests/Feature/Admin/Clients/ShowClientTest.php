@@ -17,7 +17,13 @@ class ShowClientTest extends FeatureTest
     {
         $client = Client::factory()->create();
 
-        $this->get(route(RoutesEnum::FRONT_SHOW_CLIENT, [$client->id]))
-            ->assertOk();
+        $response = $this->get(route(RoutesEnum::FRONT_SHOW_CLIENT, [$client->id]));
+        $response->assertOk();
+
+        foreach ($client->items as $item) {
+            $response->assertSee($item->title);
+            $response->assertSee($item->paragraph);
+            $response->assertSee($item->type);
+        }
     }
 }
