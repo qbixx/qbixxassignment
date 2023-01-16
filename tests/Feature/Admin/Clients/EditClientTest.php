@@ -20,4 +20,13 @@ class EditClientTest extends FeatureTest
         $this->get(route(RoutesEnum::ADMIN_EDIT_CLIENT, $client->id))
             ->assertOk();
     }
+
+    /**
+     * @test
+     */
+    public function a guest can not edit an not existing client(): void
+    {
+        $this->get(route(RoutesEnum::ADMIN_EDIT_CLIENT, 15))
+            ->assertNotFound();
+    }
 }
