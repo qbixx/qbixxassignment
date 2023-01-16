@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 use App\Enums\RoutesEnum;
 use Illuminate\Support\Facades\Route;
+use Interfaces\Admin\Clients\Controllers\DeleteClient;
+use Interfaces\Admin\Clients\Controllers\EditClient;
 use Interfaces\Admin\Clients\Controllers\IndexClients;
+use Interfaces\Admin\Clients\Controllers\SetLocale;
+use Interfaces\Admin\Clients\Controllers\ShowClient;
 use Interfaces\Admin\Clients\Controllers\StoreClient;
+use Interfaces\Admin\Clients\Controllers\UpdateClient;
 use Interfaces\Front\Landing\WelcomeController;
 
 /*
@@ -23,3 +28,8 @@ Route::get('/', WelcomeController::class)->name(RoutesEnum::FRONT_WELCOME);
 Route::get('admin/clients', IndexClients::class)->name(RoutesEnum::ADMIN_INDEX_CLIENTS);
 Route::inertia('admin/clients/create', 'Admin/Clients/Create')->name(RoutesEnum::ADMIN_CREATE_CLIENT);
 Route::post('admin/clients/create', StoreClient::class)->name(RoutesEnum::ADMIN_STORE_CLIENT);
+Route::get('admin/clients/{id}/edit', EditClient::class)->name(RoutesEnum::ADMIN_EDIT_CLIENT);
+Route::patch('admin/clients/{id}', UpdateClient::class)->name(RoutesEnum::ADMIN_UPDATE_CLIENT);
+Route::delete('admin/clients/{id}', DeleteClient::class)->name(RoutesEnum::ADMIN_DELETE_CLIENT);
+Route::get('clients/{id}', ShowClient::class)->middleware('locale')->name(RoutesEnum::FRONT_SHOW_CLIENT);
+Route::post('set-locale', SetLocale::class)->name(RoutesEnum::FRONT_SET_LOCALE);

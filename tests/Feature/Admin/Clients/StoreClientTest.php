@@ -24,6 +24,8 @@ class StoreClientTest extends FeatureTest
 
         $client = Client::first();
 
+        $this->assertCount(3, $client->items);
+
         $this->assertSame('Test name', $client->name);
     }
 
