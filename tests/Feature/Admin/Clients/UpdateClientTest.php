@@ -41,9 +41,9 @@ class UpdateClientTest extends FeatureTest
             $formData
         )->assertRedirect(route(RoutesEnum::ADMIN_INDEX_CLIENTS));
 
-        $client = Client::findOrFail($this->client->id);
+        $this->client->refresh();
 
-        $this->assertSame('New name', $client->name);
+        $this->assertSame('New name', $this->client->name);
     }
 
     /**
@@ -51,12 +51,14 @@ class UpdateClientTest extends FeatureTest
      *
      * @dataProvider invalidData
      */
-    public function a guest can not update clients name with invalid data(string $columnName, string $value, array $itemsData): void
+    public function a guest can not update clients name with invalid data(string $columnName, mixed $value): void
     {
         $formData = [
-            $columnName => $value,
-            'items' => $itemsData,
+            'name' => 'New name',
+            'items' => $this->validItemData,
         ];
+
+        $formData = array_merge($formData, [$columnName => $value]);
 
         $this->patch(
             route(
@@ -72,9 +74,12 @@ class UpdateClientTest extends FeatureTest
     public function invalidData(): array
     {
         return [
-            'name required' => ['name', '', $this->validItemData],
-            'name min 4' => ['name', 'fre', $this->validItemData],
-            'name max 30' => ['name', 'Do you know someone with a name longer than 30 characters?', $this->validItemData],
+            'required' => ['name', ''],
+            'min 4' => ['name', 'fre'],
+            'max 30' => ['name', 'Do you know someone with a name longer than 30 characters?'],
+            'items required' => ['items', ''],
+            'items array' => ['items', 'invalid'],
+            'items array size' => ['items', []],
         ];
     }
 
