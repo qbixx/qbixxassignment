@@ -26,4 +26,13 @@ class ShowClientTest extends FeatureTest
             $response->assertSee($item->type);
         }
     }
+
+    /**
+     * @test
+     */
+    public function a guest can not view not existing client(): void
+    {
+        $response = $this->get(route(RoutesEnum::FRONT_SHOW_CLIENT, 15));
+        $response->assertNotFound();
+    }
 }
