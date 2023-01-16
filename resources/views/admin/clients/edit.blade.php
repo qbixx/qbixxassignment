@@ -6,7 +6,7 @@
 <div class="w-full py-8 flex justify-center">
     <div class="block p-6 rounded-lg shadow-lg bg-white w-2/3">
         <h1>Update client</h1>
-        <form method="POST" action="{{ route('admin.clients.update', ['id' => $client->id]) }}">
+        <form method="POST" action="{{ route(RoutesEnum::ADMIN_UPDATE_CLIENT, ['id' => $client->id]) }}">
             @csrf
             @method('patch')
             <div class="form-group mb-6">
@@ -24,7 +24,7 @@
             </div>
             <div class="w-full flex items-end justify-end space-x-8">
                 <a
-                    href="/admin/clients"
+                    href="{{ route(RoutesEnum::ADMIN_INDEX_CLIENTS) }}"
                     title="Return to index"
                     class="inline-block px-6 py-2 leading-tight font-bold focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                 >
@@ -72,7 +72,7 @@
                     </div>
                 @endforeach
                 <h2>Type</h2>
-                <select name="items[{{ $item->id }}][type]" id="item-type">
+                <select name="items[{{ $item->id }}][type]">
                     @foreach ($itemTypes as $itemType)
                         <option value="{{ $itemType->name }}" {{ $item->type === $itemType->name ? "selected" : "" }}>{{ $itemType->name }}</option>
                     @endforeach

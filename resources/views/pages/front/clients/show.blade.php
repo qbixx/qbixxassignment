@@ -3,7 +3,7 @@
 @section('title', 'Show client')
 
 @section('content')
-    <form action="{{ route('front.set-locale') }}" method="POST">
+    <form action="{{ route(RoutesEnum::FRONT_SET_LOCALE) }}" method="POST">
         @csrf
         <select name="language">
             @foreach ($languages as $language)
