@@ -1,8 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 .bg-dark {
     background: rgb(43,51,58);
     background: radial-gradient(at bottom, rgba(43,51,58,1) 0%, rgba(23,27,32,1) 100%);
+}
+
+#app {
+    @apply min-h-screen
 }
