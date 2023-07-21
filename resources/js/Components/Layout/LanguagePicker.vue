@@ -50,7 +50,7 @@
 <script setup>
 import { ref } from "vue";
 import { useLanguageStore } from "@/js/Stores/LanguageStore";
-import languages from "@/js/Config/languages";
+import {usePage} from "@inertiajs/inertia-vue3";
 
 defineProps({
     id: {
@@ -59,6 +59,8 @@ defineProps({
 });
 
 const show = ref(false);
+
+const languages = usePage().props.value.languages
 
 const languageStore = useLanguageStore();
 

@@ -7,8 +7,6 @@ use App\Http\Controllers\Admin\Client\ClientArticleController;
 use App\Http\Controllers\Admin\Client\ClientController;
 use App\Http\Controllers\Admin\Front\Landing\WelcomeController;
 use App\Http\Controllers\Front\Client\ViewClientController;
-use App\Interfaces\Admin\Clients\Controllers\IndexClients;
-use App\Interfaces\Admin\Clients\Controllers\StoreClient;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +32,7 @@ Route::group([
             ->except(['show']);
 
         Route::resource('clients.articles', ClientArticleController::class)
-            ->only(['create', 'store', 'destroy', 'edit']);
+            ->except(['show']);
 
 //        Route::get('/', [ClientController::class, 'index'])->name(RoutesEnum::ADMIN_INDEX_CLIENTS);
 //        Route::inertia('create', 'Admin/Clients/Create')->name(RoutesEnum::ADMIN_CREATE_CLIENT);

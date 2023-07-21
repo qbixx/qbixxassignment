@@ -1,9 +1,11 @@
 import {defineStore} from "pinia";
 import {ref} from "vue";
-import languages from "@/js/Config/languages";
+import {usePage} from "@inertiajs/inertia-vue3";
+
+const page = usePage()
 
 export const useLanguageStore = defineStore('language', () =>{
-    const activeLanguage = ref(Object.keys(languages)[0])
+    const activeLanguage = ref(Object.keys(page.props.value.languages)[0])
 
     const setLanguage = (language) => {
         activeLanguage.value = language
