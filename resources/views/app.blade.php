@@ -12,7 +12,7 @@
         @inertiaHead
     </head>
 
-    <body class="antialiased font-sans font-normal text-gray-700 leading-normal">
+    <body class="antialiased font-sans font-normal text-gray-700 leading-normal min-h-screen">
         @inertia
     </body>
 </html>

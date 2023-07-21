@@ -23,8 +23,27 @@ module.exports = {
                     '"Segoe UI Symbol"',
                     '"Noto Color Emoji"',
                 ],
+                montserrat: [
+                    'Montserrat',
+                    'sans-serif'
+                ]
             },
-        },
+
+            colors: {
+                blue: {
+                    light: '#c2f2fd',
+                    DEFAULT: '#007fcc'
+                },
+                orange: {
+                    light: '#fff0d2',
+                    DEFAULT: '#efb740'
+                },
+                pink: {
+                    light: '#f9edfc',
+                    DEFAULT: '#e290f6'
+                }
+            }
+        }
     },
     plugins: [
         require('tw-elements/dist/plugin'),
