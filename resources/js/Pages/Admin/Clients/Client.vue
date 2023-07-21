@@ -4,7 +4,7 @@
         :title="isCreationMode ? 'New Client' : 'Edit Client'"
     >
         <div class="flex w-full flex-col items-center justify-center py-8">
-            <div class="block w-1/3 rounded bg-white p-6 shadow">
+            <div class="block w-1/2 rounded bg-white p-6 shadow">
                 <form method="POST" @submit.prevent="submit">
                     <div class="form-group mb-6">
                         <label
@@ -32,7 +32,7 @@
                 </form>
             </div>
 
-            <div class="mt-4 overflow-hidden rounded bg-white shadow" v-if="!isCreationMode">
+            <div class="mt-4 w-1/2 overflow-hidden rounded bg-white shadow" v-if="!isCreationMode">
                 <div class="flex flex-row justify-between px-6 py-4">
                     <h2 class="mr-2">Articles</h2>
                     <div class="flex flex-col items-center justify-center">
